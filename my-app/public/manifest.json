@@ -1,0 +1,15 @@
+{
+  "short_name": "Your Extension Name",
+  "name": "Your Extension Name",
+  "icons": {
+    "16": "favicon.ico",
+    "48": "logo192.png",
+   "128": "logo512.png"
+  },
+  "devtools_page": "bootstraper/bootstraper.html",
+  "permissions": ["*://*/*", "tabs", "http://*/*", "https://*/*", "debugger"],
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
+   
