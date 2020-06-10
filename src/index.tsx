@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/main/App';
 import * as serviceWorker from './serviceWorker';
-
+import Button from '@material-ui/core/Button';
+import Refersh from '@material-ui/icons/Refresh';
 ReactDOM.render(
   <React.StrictMode>
-    <button
-      onClick={() => window.location.reload()}>
-      Refresh
-  </button>
-    <App />
+    <Button
+      onClick={() => window.location.reload()}
+      variant="contained"
+      color="primary"
+      size="small"
+      startIcon={< Refersh />}
+    >
+      Refersh
+      </Button>
+      <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

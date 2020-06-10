@@ -8,7 +8,7 @@ const config = webpackconfig('development')
 const pkg = require('../package.json')
 
 // work with react-app-rewire and customize-cra
-const overrides = require('../config-overrides')
+const overrides = require('./config-overrides')
 overrides(config, process.env.NODE_ENV)
 
 // removes react-dev-utils/webpackHotDevClient.js at first in the array
