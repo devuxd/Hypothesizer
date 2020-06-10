@@ -14,7 +14,7 @@ Read more here:
 * Load the tool inside google chrome extension by going to  settings > more tools > extensions > load unpacked. Selected the build folder.
 * Open up the chrome devtools by going to settings > more tools > developers tools.
 * You should see a tab in the devtools with the title `Hypothesizer`.
-* When you make any change, click on the refresh button on the top screen inside `Hypothesizer` to have your lates change applied.
+* When you make any changes, click on the refresh button on the top screen inside `Hypothesizer` to have your latest change applied.
 
 
 
