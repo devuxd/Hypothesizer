@@ -20,7 +20,7 @@
     "jsx": "react"
   },
   "include": [
-    "src", "public/background.js"
+    "src", "public/background.js", "public/content.js"
   ],
   "types": [
     //(various types, e.g. jquery, core-js),
