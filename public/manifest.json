@@ -7,7 +7,7 @@
    "128": "logo512.png"
   },
   "devtools_page": "bootstraper/bootstraper.html",
-  "permissions": ["*://*/*", "tabs", "http://*/*", "https://*/*", "debugger"],
+  "permissions": ["*://*/*", "activeTab", "http://*/*", "https://*/*", "debugger", "storage"],
   "manifest_version": 2,
   "version": "0.0.1",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
