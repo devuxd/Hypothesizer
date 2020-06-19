@@ -3,23 +3,12 @@
 
 import React from 'react';
 import logo from './logo.svg';
+import Button from '@material-ui/core/Button';
 import './App.css';
+import * as devtools from '../../api/devtools'
 
 function App() {
-  const handleOnClick = () => {
-    console.log("in onClick function");
-    console.log("sending message to content script.");
-    window.postMessage({ type: "GET_EXTENSION_ID" }, "*");
-    console.log("now trying to send message to background.js");
-    chrome.runtime.sendMessage({test: "hello"}, function(response) {
-      console.log("Sent and received a message from background.js!");
-      console.log(response);
-    })
-    console.log("end of onClick function");
-  }
-
-  console.log("line 21 App.tsx");
-
+  devtools.init()
   return (
     <div className="App">
       <header className="App-header">
@@ -28,8 +17,16 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
          Hello World!
+      <Button onClick={() => devtools.sendMessageToBackground("Hello from app.js")}
+          variant="contained"
+          color="primary"
+          size="small"> Send Message</Button>
+          <br/>
+        <Button onClick={() => devtools.getSourceCode()}
+          variant="contained"
+          color="primary"
+          size="small"> get source code</Button>
       </header>
-      <button onClick={() => handleOnClick()}> Temp </button>
     </div>
   );
 }
