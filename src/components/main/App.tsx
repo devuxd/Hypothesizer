@@ -1,5 +1,4 @@
 /*global chrome*/
-/*src/components/main/App.tsx*/
 
 import React from 'react';
 import logo from './logo.svg';
