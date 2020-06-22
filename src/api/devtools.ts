@@ -20,14 +20,36 @@ const sendMessageToBackground = (message: String) => {
 }
 const getSourceCode = () => {
     // console.log(build_response({}))
-    //below source code gets the compiled JS file with all scripts, not what we want
     // This code only get the source code that we want :)
+    console.log("Getting the React code");
     chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
         if (obj.url.includes("src") && obj.url.includes("localhost")) {
             obj.getContent(e => console.log(e))
             console.log(obj)
         }
     }))
+    console.log("Getting CSS files");
+    chrome.devtools.inspectedWindow.getResources(function(resources:any) {
+        for(var i = 0; i < resources.length; i++)
+        {
+            if (resources[i].type === 'stylesheet') {
+                console.log("found CSS file!");
+                resources[i].getContent(function(content:any) {console.log(content)});
+                console.log(resources[i]);
+            }
+        }
+    })
+    console.log("Getting HTML file");
+    chrome.devtools.inspectedWindow.getResources(function(resources:any) {
+        for(var i = 0; i < resources.length; i++)
+        {
+            if (resources[i].type === 'document') {
+                console.log("found HTML file!");
+                resources[i].getContent(function(content:any) {console.log(content)});
+                console.log(resources[i]);
+            }
+        }
+    })
 }
 
 // following code was used from https://github.com/tomimick/chrome-ext-view-src
