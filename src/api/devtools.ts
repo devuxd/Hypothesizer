@@ -67,41 +67,20 @@ const getSourceCode = () => {
             }
         }
     });
-
-    // console.log("testing out acorn parser");
-    //testing out acorn as JSX and JS parser
-    // console.log("testing out js parsing");
-    // console.log(acorn.parse("1 + 1"));
-    // console.log("testing out jsx parsing");
-
-    // console.log(acorn.Parser.extend(jsx()).parse(`
-    //     <div className="App">
-    //         <header className="App-header">
-    //         <img src={logo} className="App-logo" alt="logo" />
-    //         <p>
-    //             Edit <code>src/App.tsx</code> and save to reload.
-    //         </p>
-    //         Hello World!
-    //         <Button onClick={() => devtools.sendMessageToBackground("Hello from app.js")}
-    //             variant="contained"
-    //             color="primary"
-    //             size="small"> Send Message</Button>
-    //             <br/>
-    //         <Button onClick={() => devtools.getSourceCode()}
-    //             variant="contained"
-    //             color="primary"
-    //             size="small"> get source code</Button>
-    //         </header>
-    //     </div>`));
-        
-    // console.log("done testing out acorn parser");
 }
 
-const parseCode = (codeType:string) => {
+const parseJSCode = () => {
     console.log("Parsing code...");
-    console.log(acorn.parse(localStorage.getItem(codeType)));
+    chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
+        if (obj.url.includes("src") && obj.url.includes("localhost")) {
+            obj.getContent(e => {
+                console.log(e); 
+                console.log(acorn.Parser.extend(jsx()).parse(e, {sourceType: "module"}));
+            })
+        }
+    }));
     console.log("Done parsing code!");
 }
 
-export { init, sendMessageToBackground, getSourceCode, parseCode }
+export { init, sendMessageToBackground, getSourceCode, parseJSCode }
 
