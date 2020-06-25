@@ -15,16 +15,15 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-         Hello World!
-      <Button onClick={() => devtools.sendMessageToBackground("Hello from app.js")}
-          variant="contained"
-          color="primary"
-          size="small"> Send Message</Button>
-          <br/>
+        <Button onClick={() => devtools.sendMessageToBackground("Hello from app.js")}
+            variant="contained"
+            color="primary"
+            size="small"> Send Message</Button>
+            <br/>
         <Button onClick={() => devtools.getSourceCode()}
           variant="contained"
           color="primary"
-          size="small"> get source code</Button>
+          size="small"> Get source code</Button>
       </header>
     </div>
   );

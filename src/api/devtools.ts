@@ -1,6 +1,11 @@
+import * as acorn from "acorn";
+let jsx = require("acorn-jsx");
 
-
-
+const appendToStorage = (name: string, data: string) => {
+    var old = localStorage.getItem(name);
+    if (old === null) old = "";
+    localStorage.setItem(name, old + data);
+}
 
 let backgroundPageConnection: chrome.runtime.Port;
 
@@ -14,16 +19,37 @@ const init = () => {
     })
 }
 
-const sendMessageToBackground = (message: String) => {
+const sendMessageToBackground = (message: string) => {
     backgroundPageConnection.postMessage({
         name: message,
         tabId: chrome.devtools.inspectedWindow.tabId
     })
 }
+
 const getSourceCode = () => {
-    chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
-        if (!obj.url.includes("node_modules") && obj.url.includes("localhost"))
-            obj.getContent(e => console.log(e))
-    }))
+
+    //get only the files that we want.
+    new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
+        try {
+            let files = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
+            return resolve(files)
+        } catch (e) {
+            return reject("Cannot load files");
+        }
+    })
+    ).then((files: any) => {
+        //parsing
+        files.forEach((file: any) => {
+            file.getContent( (e:string) => {
+                console.log(_parseJSCode(e))
+            }) 
+        });
+    }).catch(error => console.log(error))
+
 }
+
+const _parseJSCode = (jsCode: string) => {
+    return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
+}
+
 export { init, sendMessageToBackground, getSourceCode }
