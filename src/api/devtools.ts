@@ -1,9 +1,9 @@
-let acorn = require("acorn");
+import * as acorn from "acorn";
 let jsx = require("acorn-jsx");
 
-function appendToStorage(name:any, data:any){
+const appendToStorage = (name: string, data: string) => {
     var old = localStorage.getItem(name);
-    if(old === null) old = "";
+    if (old === null) old = "";
     localStorage.setItem(name, old + data);
 }
 
@@ -19,7 +19,7 @@ const init = () => {
     })
 }
 
-const sendMessageToBackground = (message: String) => {
+const sendMessageToBackground = (message: string) => {
     backgroundPageConnection.postMessage({
         name: message,
         tabId: chrome.devtools.inspectedWindow.tabId
@@ -28,44 +28,27 @@ const sendMessageToBackground = (message: String) => {
 
 const getSourceCode = () => {
 
-    //get JS code and parse it
-    chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
-        if (obj.url.includes("src") && obj.url.includes("localhost")) {
-            obj.getContent(e => {
-                console.log(e); 
-                console.log(parseJSCode(e))
-            })
+    //get only the files that we want.
+    new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
+        try {
+            let files = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
+            return resolve(files)
+        } catch (e) {
+            return reject("Cannot load files");
         }
-    }));
+    })
+    ).then((files: any) => {
+        //parsing
+        files.forEach((file: any) => {
+            console.log(_parseJSCode(file.getContent()))
+        });
+    }).catch(error => console.log(error))
 
-    //get CSS stylesheets
-    chrome.devtools.inspectedWindow.getResources(function(resources:any) {
-        for(var i = 0; i < resources.length; i++)
-        {
-            if (resources[i].type === 'stylesheet') {
-                resources[i].getContent(function(content:any) {
-                    console.log(content);
-                });
-            }
-        }
-    });
-
-    //get HTML document
-    chrome.devtools.inspectedWindow.getResources(function(resources:any) {
-        for(var i = 0; i < resources.length; i++)
-        {
-            if (resources[i].type === 'document') {
-                resources[i].getContent(function(content:any) {
-                    console.log(content);
-                });
-            }
-        }
-    });
 }
 
-const parseJSCode = (jsCode:any) => {
-    return acorn.Parser.extend(jsx()).parse(jsCode, {sourceType: "module"});
+const _parseJSCode = (jsCode: string) => {
+    return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
 }
 
-export { init, sendMessageToBackground, getSourceCode, parseJSCode }
+export { init, sendMessageToBackground, getSourceCode }
 
