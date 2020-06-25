@@ -25,61 +25,46 @@ const sendMessageToBackground = (message: String) => {
         tabId: chrome.devtools.inspectedWindow.tabId
     })
 }
-const getSourceCode = () => {
-    
-    console.log("Getting the React code");
 
+const getSourceCode = () => {
+
+    //get JS code and parse it
     chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
         if (obj.url.includes("src") && obj.url.includes("localhost")) {
             obj.getContent(e => {
                 console.log(e); 
-                appendToStorage("jsCode", e)
+                console.log(parseJSCode(e))
             })
         }
     }));
-    
-    console.log("Getting CSS files");
+
+    //get CSS stylesheets
     chrome.devtools.inspectedWindow.getResources(function(resources:any) {
         for(var i = 0; i < resources.length; i++)
         {
             if (resources[i].type === 'stylesheet') {
-                console.log("found CSS file!");
                 resources[i].getContent(function(content:any) {
-                    console.log(content); 
-                    appendToStorage("cssCode", content)
+                    console.log(content);
                 });
-                console.log(resources[i]);
             }
         }
     });
 
-    console.log("Getting HTML file");
+    //get HTML document
     chrome.devtools.inspectedWindow.getResources(function(resources:any) {
         for(var i = 0; i < resources.length; i++)
         {
             if (resources[i].type === 'document') {
-                console.log("found HTML file!");
                 resources[i].getContent(function(content:any) {
-                    console.log(content); 
-                    appendToStorage("htmlCode", content)
+                    console.log(content);
                 });
-                console.log(resources[i]);
             }
         }
     });
 }
 
-const parseJSCode = () => {
-    console.log("Parsing code...");
-    chrome.devtools.inspectedWindow.getResources(e => e.filter(obj => {
-        if (obj.url.includes("src") && obj.url.includes("localhost")) {
-            obj.getContent(e => {
-                console.log(e); 
-                console.log(acorn.Parser.extend(jsx()).parse(e, {sourceType: "module"}));
-            })
-        }
-    }));
-    console.log("Done parsing code!");
+const parseJSCode = (jsCode:any) => {
+    return acorn.Parser.extend(jsx()).parse(jsCode, {sourceType: "module"});
 }
 
 export { init, sendMessageToBackground, getSourceCode, parseJSCode }

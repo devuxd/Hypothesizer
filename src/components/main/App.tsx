@@ -24,10 +24,6 @@ function App() {
           variant="contained"
           color="primary"
           size="small"> Get source code</Button>
-        <Button onClick={() => devtools.parseJSCode()}
-          variant="contained"
-          color="primary"
-          size="small"> Parse JS code</Button>
       </header>
     </div>
   );
