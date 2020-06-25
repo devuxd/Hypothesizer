@@ -40,7 +40,9 @@ const getSourceCode = () => {
     ).then((files: any) => {
         //parsing
         files.forEach((file: any) => {
-            console.log(_parseJSCode(file.getContent()))
+            file.getContent( (e:string) => {
+                console.log(_parseJSCode(e))
+            }) 
         });
     }).catch(error => console.log(error))
 
@@ -51,4 +53,3 @@ const _parseJSCode = (jsCode: string) => {
 }
 
 export { init, sendMessageToBackground, getSourceCode }
-
