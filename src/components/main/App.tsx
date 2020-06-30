@@ -24,6 +24,10 @@ function App() {
           variant="contained"
           color="primary"
           size="small"> Get source code</Button>
+        <Button onClick={() => devtools.runtimeAPITest()}
+          variant="contained"
+          color="primary"
+          size="small"> Test runtime API </Button>
       </header>
     </div>
   );

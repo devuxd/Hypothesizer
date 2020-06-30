@@ -48,8 +48,31 @@ const getSourceCode = () => {
 
 }
 
+const runtimeAPITest = () => {
+    chrome.debugger.attach({
+        tabId: chrome.devtools.inspectedWindow.tabId
+    }, '1.1', () => {
+        if(chrome.runtime.lastError) console.log("Oh no!");
+        console.log("Done. We are good");
+    })
+
+    chrome.debugger.sendCommand({ 
+        tabId: chrome.devtools.inspectedWindow.tabId 
+    }, "Debugger.enable", {}, () => {
+        console.log("Debugger enabled!");
+        chrome.debugger.sendCommand({
+            tabId: chrome.devtools.inspectedWindow.tabId
+        }, "Tracing.start", {"maxCallStackDepth" : 5}, (response) => {
+            console.log(response);
+            chrome.debugger.onEvent.addListener(function(tabId, method, params) {
+                console.log("params = ", params);
+            });
+        })
+    })
+}
+
 const _parseJSCode = (jsCode: string) => {
     return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
 }
 
-export { init, sendMessageToBackground, getSourceCode }
+export { init, sendMessageToBackground, getSourceCode, runtimeAPITest }
