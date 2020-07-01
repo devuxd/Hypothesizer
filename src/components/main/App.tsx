@@ -28,6 +28,10 @@ function App() {
           variant="contained"
           color="primary"
           size="small"> Test runtime API </Button>
+        <Button onClick={() => devtools.profile()}
+          variant="contained"
+          color="primary"
+          size="small"> Profile </Button>
       </header>
     </div>
   );
