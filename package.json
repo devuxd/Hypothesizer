@@ -13,7 +13,7 @@
   },
   "scripts": {
 
-    "watch": "concurrently \"node scripts/watch.js\" \"cd target_test/react-todo-application/ && npm run start\"",
+    "watch": "concurrently \"node scripts/watch.js\" \"cd test && npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
