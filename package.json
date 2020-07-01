@@ -12,7 +12,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "watch": "node scripts/watch.js",
+
+    "watch": "concurrently \"node scripts/watch.js\" \"cd target_test/react-todo-application/ && npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +43,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.12.46",
+    "concurrently": "^5.2.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/material-ui": "^0.21.7",
