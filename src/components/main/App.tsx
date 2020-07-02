@@ -28,10 +28,14 @@ function App() {
           variant="contained"
           color="primary"
           size="small"> Test runtime API </Button>
-        <Button onClick={() => devtools.profile()}
+        <Button onClick={() => devtools.startProfiler()}
           variant="contained"
           color="primary"
-          size="small"> Profile </Button>
+          size="small"> Start Profile </Button>
+                  <Button onClick={() => devtools.endProfiler()}
+          variant="contained"
+          color="primary"
+          size="small"> End Profile </Button>
       </header>
     </div>
   );

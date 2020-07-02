@@ -71,15 +71,19 @@ const runtimeAPITest = () => {
     })
 }
 
-const profile = () => {
+const startProfiler = () => {
     chrome.extension.sendRequest({
-        command: "getCoverage"
+        command: "startProfiling"
     });
-    console.log("sent message to background");
+}
+const endProfiler = () => {
+    chrome.extension.sendRequest({
+        command: "endProfiling"
+    });
 }
 
 const _parseJSCode = (jsCode: string) => {
     return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
 }
 
-export { init, sendMessageToBackground, getSourceCode, runtimeAPITest, profile }
+export { init, sendMessageToBackground, getSourceCode, runtimeAPITest, startProfiler, endProfiler }
