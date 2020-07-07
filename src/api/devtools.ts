@@ -1,4 +1,7 @@
 import * as acorn from "acorn";
+import * as estree from "estree-walker";
+
+let astList:any = []
 let jsx = require("acorn-jsx");
 
 const appendToStorage = (name: string, data: string) => {
@@ -13,10 +16,16 @@ const init = () => {
     backgroundPageConnection = chrome.runtime.connect({
         name: "Hypothesizer"
     });
-    backgroundPageConnection.onMessage.addListener(function (message) {
+    chrome.runtime.onMessage.addListener(function (message) {
         console.log("Received message from background.js");
         console.log(message);
-    })
+        
+        if(message.type === "profiling")
+        {
+            console.log("Got a list of methods from profiling");
+            mapMethodsToSource(message.msg);
+        }
+    });
 }
 
 const sendMessageToBackground = (message: string) => {
@@ -24,6 +33,38 @@ const sendMessageToBackground = (message: string) => {
         name: message,
         tabId: chrome.devtools.inspectedWindow.tabId
     })
+}
+
+const mapMethodsToSource = (methods: any) => {
+    for(var ast of astList)
+    {
+        estree.walk(ast.tree, {
+            enter: function(node:any, parent:any, prop:any, index:any) {
+                if(node.type === "FunctionDeclaration") {
+                    if(methods.includes(node.id.name))
+                    {
+                        console.log(`Method name ${node.id.name}, found in ${ast.file}`);
+                    }
+                }
+                // look for arrow functions
+                if(node.type === "VariableDeclaration")
+                {
+                    for(var dec of node.declarations)
+                    {
+                        if(methods.includes(dec.id.name))
+                        {
+                            if(dec.init.type == "ArrowFunctionExpression")
+                            {
+                                console.log(`Arrow function name ${dec.id.name}, found in ${ast.file}`);
+                            }
+                        }
+                    }
+                }
+            },
+            leave: function(node, parent, prop, index) {}
+        })
+    }
+
 }
 
 const getSourceCode = () => {
@@ -41,7 +82,8 @@ const getSourceCode = () => {
         //parsing
         files.forEach((file: any) => {
             file.getContent( (e:string) => {
-                console.log(_parseJSCode(e))
+                var ast:any = _parseJSCode(e);
+                astList.push( {tree:ast, file:file.url} );
             }) 
         });
     }).catch(error => console.log(error))
@@ -85,5 +127,7 @@ const endProfiler = () => {
 const _parseJSCode = (jsCode: string) => {
     return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
 }
+
+init()
 
 export { init, sendMessageToBackground, getSourceCode, runtimeAPITest, startProfiler, endProfiler }

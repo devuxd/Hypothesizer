@@ -43,21 +43,24 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
             function (tabArray) {
                 var activeTab = tabArray[0];
                 chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.takePreciseCoverage", undefined, function (response) {
-                    for(var i = 0; i < response.result.length;  i++)
+                    // send result to devtools script
+                    console.log(response.result);
+                    methods = [];
+                    for(var obj of response.result)
                     {
-                        if(response.result[i].url === "") {}
-                        else if (response.result[i].url.includes("webpack-internal")) {
-                            var used = false;
-                            for(var j = 0; j < response.result[i].functions.length; j++)
+                        if(obj.url.includes("main.chunk.js"))
+                        {
+                            for(var func of obj.functions)
                             {
-                                if(response.result[i].functions[j].isBlockCoverage)
+                                if(func.isBlockCoverage && func.functionName !== "")
                                 {
-                                    used = true;
+                                    methods.push(func.functionName);
                                 }
                             }
-                            if(used) console.log(response.result[i]);
                         }
                     }
+                    console.log(methods);
+                    chrome.runtime.sendMessage( {type: "profiling", msg: methods}, (response) => console.log(response));
                 });
                 chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.disable", undefined, function (result) {
                 });
