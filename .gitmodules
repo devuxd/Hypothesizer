@@ -1,0 +1,6 @@
+[submodule "target_test"]
+	path = target_test
+	url = https://github.com/saisree27/react-todo-application.git
+[submodule "test"]
+	path = test
+	url = https://github.com/saisree27/react-todo-application.git

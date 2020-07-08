@@ -1,22 +1,35 @@
-import * as acorn from "acorn";
-let jsx = require("acorn-jsx");
 
-const appendToStorage = (name: string, data: string) => {
-    var old = localStorage.getItem(name);
-    if (old === null) old = "";
-    localStorage.setItem(name, old + data);
-}
+import { analyzeCode } from "./codeAnalyzer";
+
+
 
 let backgroundPageConnection: chrome.runtime.Port;
+let alreadySent = false; // to prevent multiple request sending
 
 const init = () => {
     backgroundPageConnection = chrome.runtime.connect({
         name: "Hypothesizer"
     });
-    backgroundPageConnection.onMessage.addListener(function (message) {
+    chrome.runtime.onMessage.addListener(async (message) => {
         console.log("Received message from background.js");
         console.log(message);
-    })
+
+        if (message.type === "profiling") {
+            console.log("Got a list of methods from profiling");
+            try {
+                const files: any[] = await getSourceCodeFiles();
+                const coverage = await analyzeCode(message.msg, files);
+                console.log(coverage);
+                if(!alreadySent) {
+                    window.postMessage({ msg: coverage }, "*");
+                    alreadySent = true;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+
+        }
+    });
 }
 
 const sendMessageToBackground = (message: string) => {
@@ -26,30 +39,35 @@ const sendMessageToBackground = (message: string) => {
     })
 }
 
-const getSourceCode = () => {
 
-    //get only the files that we want.
-    new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
+
+//get only the files that we want.
+const getSourceCodeFiles = async (): Promise<any> => {
+    return new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
         try {
-            let files = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
+            let files: any[] = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
             return resolve(files)
         } catch (e) {
             return reject("Cannot load files");
         }
     })
-    ).then((files: any) => {
-        //parsing
-        files.forEach((file: any) => {
-            file.getContent( (e:string) => {
-                console.log(_parseJSCode(e))
-            }) 
-        });
-    }).catch(error => console.log(error))
-
+    )
 }
 
-const _parseJSCode = (jsCode: string) => {
-    return acorn.Parser.extend(jsx()).parse(jsCode, { sourceType: "module" });
+
+const startProfiler = () => {
+    alreadySent = false;
+    chrome.extension.sendRequest({
+        command: "startProfiling"
+    });
+}
+const endProfiler = () => {
+    chrome.extension.sendRequest({
+        command: "endProfiling"
+    });
 }
 
-export { init, sendMessageToBackground, getSourceCode }
+
+
+
+export { init, sendMessageToBackground, startProfiler, endProfiler }

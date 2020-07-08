@@ -1,6 +1,6 @@
 {
-  "short_name": "Your Extension Name",
-  "name": "Your Extension Name",
+  "short_name": "Hypothesizer",
+  "name": "Hypothesizer",
   "icons": {
     "16": "favicon.ico",
     "48": "logo192.png",
