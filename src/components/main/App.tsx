@@ -21,7 +21,10 @@ function App() {
   window.addEventListener("message", function(event) {
     setProfiled(true);
     setShowModal(true);
-    setResults(event.data.msg);
+    var result = event.data.msg.filter(function(elem:any, index:number, self:any) {
+      return index === self.indexOf(elem);
+    });
+    setResults(result);
   });
   return (
     <div className="App">

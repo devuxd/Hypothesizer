@@ -22,7 +22,7 @@ const analyzeCode = async (methods: any, files: string[]) => {
             enter: (node: any, parent: any, prop: any, index: any) => {
                 if (node.type === "FunctionDeclaration") {
                     if (methods.includes(node.id.name)) {
-                        var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"))
+                        var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
                         coverage.push(`${node.id.name} inside ${filename} got executed.`);
                     }
                 }
@@ -31,7 +31,7 @@ const analyzeCode = async (methods: any, files: string[]) => {
                     for (var dec of node.declarations) {
                         if (methods.includes(dec.id.name)) {
                             if (dec.init.type == "ArrowFunctionExpression") {
-                                var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"))
+                                var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
                                 coverage.push(`${dec.id.name} inside ${filename} got executed.`);
                             }
                         }
