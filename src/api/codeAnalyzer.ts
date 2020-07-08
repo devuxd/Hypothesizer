@@ -22,7 +22,8 @@ const analyzeCode = async (methods: any, files: string[]) => {
             enter: (node: any, parent: any, prop: any, index: any) => {
                 if (node.type === "FunctionDeclaration") {
                     if (methods.includes(node.id.name)) {
-                        coverage.push(`Method name ${node.id.name}, found in ${ast.file}`);
+                        var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"))
+                        coverage.push(`${node.id.name} inside ${filename} got executed.`);
                     }
                 }
                 // look for arrow functions
@@ -30,7 +31,8 @@ const analyzeCode = async (methods: any, files: string[]) => {
                     for (var dec of node.declarations) {
                         if (methods.includes(dec.id.name)) {
                             if (dec.init.type == "ArrowFunctionExpression") {
-                                coverage.push(`Arrow function name ${dec.id.name}, found in ${ast.file}`);
+                                var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"))
+                                coverage.push(`${dec.id.name} inside ${filename} got executed.`);
                             }
                         }
                     }

@@ -4,6 +4,7 @@ import { analyzeCode } from "./codeAnalyzer";
 
 
 let backgroundPageConnection: chrome.runtime.Port;
+let alreadySent = false; // to prevent multiple request sending
 
 const init = () => {
     backgroundPageConnection = chrome.runtime.connect({
@@ -19,6 +20,10 @@ const init = () => {
                 const files: any[] = await getSourceCodeFiles();
                 const coverage = await analyzeCode(message.msg, files);
                 console.log(coverage);
+                if(!alreadySent) {
+                    window.postMessage({ msg: coverage }, "*");
+                    alreadySent = true;
+                }
             } catch (error) {
                 console.error(error);
             }
@@ -51,6 +56,7 @@ const getSourceCodeFiles = async (): Promise<any> => {
 
 
 const startProfiler = () => {
+    alreadySent = false;
     chrome.extension.sendRequest({
         command: "startProfiling"
     });
