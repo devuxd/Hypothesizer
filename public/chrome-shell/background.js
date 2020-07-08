@@ -27,10 +27,12 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                 chrome.debugger.attach({ tabId: activeTab.id }, "1.2", function () {
                     console.log("attached");
                     chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.enable", undefined, function (result) {
-                        console.log("ProfilerStarted:", result);
-                        chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.startPreciseCoverage", { callCount: true, detailed: true }, function (result) {
-                            console.log("coverageStarted:", result);
+                        chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.start", undefined, function (result) {
+                            console.log("ProfilerStarted:", result);
+                            chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.startPreciseCoverage", { callCount: true, detailed: true }, function (result) {
+                                console.log("coverageStarted:", result);
 
+                            });
                         });
                     });
                 });
@@ -46,25 +48,27 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                     // send result to devtools script
                     console.log(response.result);
                     methods = [];
-                    for(var obj of response.result)
-                    {
-                        if(obj.url.includes("main.chunk.js"))
-                        {
-                            for(var func of obj.functions)
-                            {
-                                if(func.isBlockCoverage && func.functionName !== "")
-                                {
+                    for (var obj of response.result) {
+                        if (obj.url.includes("main.chunk.js")) {
+                            for (var func of obj.functions) {
+                                if (func.isBlockCoverage && func.functionName !== "") {
                                     methods.push(func.functionName);
                                 }
                             }
                         }
                     }
                     console.log(methods);
-                    chrome.runtime.sendMessage( {type: "profiling", msg: methods}, (response) => console.log(response));
-                });
-                chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.disable", undefined, function (result) {
+                    chrome.runtime.sendMessage({ type: "profiling", msg: methods }, (response) => console.log(response));
+                    chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.stopPreciseCoverage", undefined, function (result) {
+                        chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.stop", undefined, function (result) {
+                            chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.disable", undefined, function (result) {
+
+                            });
+                        });
+                    });
+
                 });
             }
-        )
+        );
     }
 });
