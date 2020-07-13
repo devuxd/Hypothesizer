@@ -9,6 +9,7 @@
     "acorn-jsx": "^5.2.0",
     "bootstrap": "^4.5.0",
     "estree-walker": "^2.0.1",
+    "keyword-extractor": "0.0.19",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",

@@ -58,7 +58,7 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                         }
                     }
                     console.log(methods);
-                    chrome.runtime.sendMessage({ type: "profiling", msg: methods }, (response) => console.log(response));
+                    chrome.runtime.sendMessage({ type: "profiling", msg: methods, tags:request.tag }, (response) => console.log(response));
                     chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.stopPreciseCoverage", undefined, function (result) {
                         chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.stop", undefined, function (result) {
                             chrome.debugger.sendCommand({ tabId: activeTab.id }, "Profiler.disable", undefined, function (result) {

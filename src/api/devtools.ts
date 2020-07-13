@@ -1,6 +1,8 @@
 
-import { analyzeCode } from "./codeAnalyzer";
+import { analyzeCode, constructAST, useTags } from "./codeAnalyzer";
+import { data } from "./tempDatabase";
 
+var keyword_extractor = require("keyword-extractor");
 
 
 let backgroundPageConnection: chrome.runtime.Port;
@@ -19,9 +21,9 @@ const init = () => {
             try {
                 const files: any[] = await getSourceCodeFiles();
                 const coverage = await analyzeCode(message.msg, files);
-                console.log(coverage);
+                const hypotheses = await useTags(message.tags, files);
                 if(!alreadySent) {
-                    window.postMessage({ msg: coverage }, "*");
+                    window.postMessage({ msg: coverage, ranking: hypotheses }, "*");
                     alreadySent = true;
                 }
             } catch (error) {
@@ -45,8 +47,8 @@ const sendMessageToBackground = (message: string) => {
 const getSourceCodeFiles = async (): Promise<any> => {
     return new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
         try {
-            let files: any[] = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
-            return resolve(files)
+            let temp: any[] = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
+            return resolve(temp)
         } catch (e) {
             return reject("Cannot load files");
         }
@@ -61,13 +63,24 @@ const startProfiler = () => {
         command: "startProfiling"
     });
 }
-const endProfiler = () => {
+const endProfiler = (tags:any) => {
+    console.log(tags);
     chrome.extension.sendRequest({
-        command: "endProfiling"
+        command: "endProfiling",
+        tag: tags
     });
+}
+
+const getKeywords = (sentence:string) => {
+    var extraction_result:[] = keyword_extractor.extract(sentence, {
+        language: "english",
+        remove_digits: true,
+        return_changed_case: true,
+        remove_duplicates: true 
+    })
+    return extraction_result
 }
 
 
 
-
-export { init, sendMessageToBackground, startProfiler, endProfiler }
+export { init, sendMessageToBackground, startProfiler, endProfiler, getKeywords, useTags }

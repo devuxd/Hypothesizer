@@ -1,5 +1,6 @@
 /*global chrome*/
 
+
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,15 +10,33 @@ import Modal from 'react-bootstrap/Modal'
 import Pause from '@material-ui/icons/Pause';
 import WbIncandescent from '@material-ui/icons/WbIncandescent';
 import './App.css';
-import * as devtools from '../../api/devtools'
-import { EditorFormatAlignCenter } from 'material-ui/svg-icons';
+import * as devtools from '../../api/devtools';
+import { Fragment } from 'react';
 
 function App() {
-  devtools.init()
+  devtools.init();
+
   const [recording, setRecording] = React.useState(false);
   const [profiled, setProfiled] = React.useState(false);
   const [results, setResults] = React.useState([]);
   const [showModal, setShowModal] = React.useState(false);
+  const [showTags, setShowTags] = React.useState(false);
+  const [tags, setTags] = React.useState([]);
+  const [ranking, setRanking] = React.useState([]);
+
+  var inputState:any = React.createRef();
+
+  const handleChange = (event:any) => {
+    const value:string = inputState.current.value;
+    var keywords:[] = devtools.getKeywords(value);
+    setTags(devtools.getKeywords(value));
+    if(keywords.length >= 1) {
+      setShowTags(true);
+    }
+    else setShowTags(false);
+  }
+
+
   window.addEventListener("message", function(event) {
     setProfiled(true);
     setShowModal(true);
@@ -25,7 +44,19 @@ function App() {
       return index === self.indexOf(elem);
     });
     setResults(result);
+    event.data.ranking[Symbol.iterator] = function* () {
+      yield* [...this.entries()].sort((a, b) => a[1] - b[1]);
+    };
+    var newRanking:any = [];
+    for(var key of event.data.ranking.keys()) {
+      var jsonObject:any = {};
+      jsonObject["hypothesis"] = key.hypothesis;
+      jsonObject["confidence"] = event.data.ranking.get(key);
+      newRanking.push( jsonObject );
+    }
+    setRanking(newRanking);
   });
+
   return (
     <div className="App">
       <div className="App-header">
@@ -39,7 +70,10 @@ function App() {
         <Form>
           <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label style={{fontSize: 15}}>Describe the defect generally. </Form.Label>
-          <Form.Control as="textarea"/>
+          <Form.Control as="textarea" ref={inputState} onChange={handleChange}/>
+          <Form.Text className="text-muted" style={{fontSize: 12}}> 
+            {showTags ? <p>Tags: {tags.map<React.ReactNode>(t => <span>{t}</span>).reduce((prev, curr) => [prev, ', ', curr])}</p> : <p></p>}
+          </Form.Text>
           </Form.Group>
         </Form>
         <p style={{fontSize:15}}> Please click record and reproduce the defect. </p>
@@ -48,19 +82,26 @@ function App() {
         {!recording ? <Button onClick={() => {devtools.startProfiler(); setRecording(true)}}
             variant="primary"
             > <Videocam/> Start Recording </Button>
-            : <Button onClick={() => {devtools.endProfiler(); setRecording(false);}}
+            : <Button onClick={() => {devtools.endProfiler(tags); setRecording(false); setShowModal(true);}}
             variant="warning"
             > <Pause/> End Recording </Button>}
       </div>
       {showModal ?
       <div>        
         <Modal.Dialog>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Results</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            {profiled ? <div> {results.map(text => <p>{text}</p>)} </div> : <div></div>}
+            <h1>Hypotheses Ranking</h1>
+            {profiled ? <div> {ranking.map((entry:any) => (
+                                <p> <strong> Hypothesis: </strong> {entry.hypothesis} <strong> Confidence score: </strong>
+                                 {entry.confidence}% </p>
+                              ))} 
+                        </div> : <div> Loading... </div>}
+            <h1>Execution Trace</h1>
+            {profiled ? <div> {results.map(text => <p>{text}</p>)} </div> : <div> Loading... </div>}
           </Modal.Body>
 
           <Modal.Footer>
