@@ -5,18 +5,19 @@ import App from './components/main/App';
 import * as serviceWorker from './serviceWorker';
 import Button from 'react-bootstrap/Button';
 import Refresh from '@material-ui/icons/Refresh';
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { initializeHypothesizer } from './api/devtools';
+
+initializeHypothesizer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Button
       onClick={() => window.location.reload()}
       variant="contained"
-    > <Refresh/>
+    > <Refresh />
     </Button>
-      <App />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

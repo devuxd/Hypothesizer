@@ -1,6 +1,5 @@
 import * as acorn from "acorn";
 import * as estree from "estree-walker";
-import { data } from "./tempDatabase";
 let jsx = require("acorn-jsx");
 
 const constructAST = async (files: any[]) => {
@@ -15,25 +14,26 @@ const constructAST = async (files: any[]) => {
     }
     return astList
 }
-const analyzeCode = async (methods: any, files: string[]) => {
-    const coverage: string[] = [];
+const analyzeCode = async (coverage: any, files: string[]) => {
+    const relevantAST: Object[] = [];
     const astList = await constructAST(files);
-    for (var ast of astList) {
+    debugger
+    for (const ast of astList) {
         estree.walk(ast.tree, {
             enter: (node: any, parent: any, prop: any, index: any) => {
                 if (node.type === "FunctionDeclaration") {
-                    if (methods.includes(node.id.name)) {
-                        var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
-                        coverage.push(`${node.id.name} inside ${filename} got executed.`);
+                    if (coverage.findIndex(e => e.functionName === node.id.name)) {
+                        const filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
+                        relevantAST.push({node, filename});
                     }
                 }
                 // look for arrow functions
                 if (node.type === "VariableDeclaration") {
-                    for (var dec of node.declarations) {
-                        if (methods.includes(dec.id.name)) {
+                    for (const dec of node.declarations) {
+                        if (coverage.findIndex(e => e.functionName === dec.id.name)) {
                             if (dec.init.type == "ArrowFunctionExpression") {
-                                var filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
-                                coverage.push(`${dec.id.name} inside ${filename} got executed.`);
+                                const filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
+                                relevantAST.push({node, filename});
                             }
                         }
                     }
@@ -43,56 +43,9 @@ const analyzeCode = async (methods: any, files: string[]) => {
         })
     }
 
-    return coverage;
+    return relevantAST;
 }
 
-const useTags = async (tags:any, files:any) => {
-    var temp:any = data;
-    var entriesToCheck = [];
-    for(var entry of temp) {
-        for(var tag of entry.tags) {
-            if(tags.includes(tag)) {
-                entriesToCheck.push(entry);
-            }
-        }
-    }
-    var asts:any = await constructAST(files);
-    var returnObj = new Map();
 
-    for(var entry of entriesToCheck) {
-        returnObj.set(entry, 0);
-        switch(entry.verification) {
-            case 0:
-                var confidence = 0;
-                for(var ast of asts) {
-                    estree.walk(ast.tree, {
-                        enter: (node: any, parent: any, prop: any, index: any) => {
-                            if (node.type === "JSXAttribute") {
-                                if (node.name.type === "JSXIdentifier") {
-                                    if (node.name.name === "onSubmit" || node.name.name === "onClick") {
-                                        if(node.value.expression.type === "CallExpression") {
-                                           confidence = 100;
-                                        } 
-                                    }
-                                }
-                            }
-                        },
-                        leave: (node, parent, prop, index) => { }
-                    })
-                }
-                returnObj.set(entry, confidence);
-                break
-            case 1:
-                // nothing necessary, temporary demo
-                break
-            case 2:
-                // nothing necessary, temporary demo
-                break
-            default:
-                break
-        }
-    }
-    return returnObj;
-}
 
-export { analyzeCode, constructAST, useTags }
+export { analyzeCode, constructAST }

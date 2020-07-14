@@ -1,37 +1,15 @@
+import { AnyMxRecord } from "dns";
 
-import { analyzeCode, useTags } from "./codeAnalyzer";
-
-var keyword_extractor = require("keyword-extractor");
 
 
 let backgroundPageConnection: chrome.runtime.Port;
-let alreadySent = false; // to prevent multiple request sending
 
-const init = () => {
+const initializeHypothesizer = () => {
     backgroundPageConnection = chrome.runtime.connect({
         name: "Hypothesizer"
     });
-    chrome.runtime.onMessage.addListener(async (message) => {
-        console.log("Received message from background.js");
-        console.log(message);
-
-        if (message.type === "profiling") {
-            console.log("Got a list of methods from profiling");
-            try {
-                const files: any[] = await getSourceCodeFiles();
-                const coverage = await analyzeCode(message.msg, files);
-                const hypotheses = await useTags(message.tags, files);
-                if(!alreadySent) {
-                    window.postMessage({ msg: coverage, ranking: hypotheses }, "*");
-                    alreadySent = true;
-                }
-            } catch (error) {
-                console.error(error);
-            }
-
-        }
-    });
 }
+
 
 const sendMessageToBackground = (message: string) => {
     backgroundPageConnection.postMessage({
@@ -57,29 +35,35 @@ const getSourceCodeFiles = async (): Promise<any> => {
 
 
 const startProfiler = () => {
-    alreadySent = false;
-    chrome.extension.sendRequest({
-        command: "startProfiling"
-    });
-}
-const endProfiler = (tags:any) => {
-    console.log(tags);
-    chrome.extension.sendRequest({
-        command: "endProfiling",
-        tag: tags
+    const activeTab = chrome.devtools.inspectedWindow.tabId
+    console.log("tabid: " + activeTab)
+    chrome.debugger.attach({ tabId: activeTab }, "1.2", function () {
+        chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.enable", undefined, function (result) {
+            chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.start", undefined, function (result) {
+                chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.startPreciseCoverage", { callCount: true, detailed: true }, function (result) { });
+            });
+        });
     });
 }
 
-const getKeywords = (sentence:string) => {
-    var extraction_result:[] = keyword_extractor.extract(sentence, {
-        language: "english",
-        remove_digits: true,
-        return_changed_case: true,
-        remove_duplicates: true 
+
+const endProfiler = async () => {
+    const activeTab = chrome.devtools.inspectedWindow.tabId;
+    return new Promise((resolve, reject) => chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.takePreciseCoverage", undefined, (response: any) => {
+        chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.stopPreciseCoverage", undefined, (result) => {
+            chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.stop", undefined, (result) => {
+                chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.disable", undefined, (result) => {
+                    const methodCoverage = response.result.filter(
+                        (file: any) => file.url.includes("localhost")
+                    ).map((file: any) => file.functions.filter((func: any) => func.isBlockCoverage)).flat()
+                    return resolve(methodCoverage)
+                });
+            });
+        });
+
     })
-    return extraction_result
+    );
 }
 
 
-
-export { init, sendMessageToBackground, startProfiler, endProfiler, getKeywords, useTags }
+export { initializeHypothesizer, sendMessageToBackground, startProfiler, endProfiler, getSourceCodeFiles }
