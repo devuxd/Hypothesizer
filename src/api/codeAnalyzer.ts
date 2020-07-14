@@ -22,7 +22,7 @@ const analyzeCode = async (coverage: any, files: string[]) => {
         estree.walk(ast.tree, {
             enter: (node: any, parent: any, prop: any, index: any) => {
                 if (node.type === "FunctionDeclaration") {
-                    if (coverage.findIndex(e => e.functionName === node.id.name)) {
+                    if (coverage.findIndex( (e:any) => e.functionName === node.id.name)) {
                         const filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
                         relevantAST.push({node, filename});
                     }
@@ -30,7 +30,7 @@ const analyzeCode = async (coverage: any, files: string[]) => {
                 // look for arrow functions
                 if (node.type === "VariableDeclaration") {
                     for (const dec of node.declarations) {
-                        if (coverage.findIndex(e => e.functionName === dec.id.name)) {
+                        if (coverage.findIndex( (e:any) => e.functionName === dec.id.name)) {
                             if (dec.init.type == "ArrowFunctionExpression") {
                                 const filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
                                 relevantAST.push({node, filename});

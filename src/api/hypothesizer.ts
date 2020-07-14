@@ -1,6 +1,7 @@
 import { analyzeCode } from "./codeAnalyzer";
 import { getSourceCodeFiles } from "./devtools";
 import { hypotheses } from "./tempDatabase";
+import * as estree from "estree-walker";
 var keyword_extractor = require("keyword-extractor");
 
 
@@ -17,14 +18,15 @@ const getRelevantAndRankedHypotheses = async (description: String, runTimeMethod
 
 const RankHypotheses = async (description: any, coverageAST: any) => {
     const tags = getKeywords(description);
-    let candidateHypotheses: any[] = hypotheses.filter(hypothesis => hypothesis.tags.some((tag: any) => tags.includes(tag)))
+    let candidateHypotheses: any[] = hypotheses.filter(hypothesis => hypothesis.tags.some((tag: any) => tags.includes(tag)));
+    var returnObj:Map<any, number> = new Map();
 
-    for (var entry of coverageAST) {
+    for (var entry of candidateHypotheses) {
         returnObj.set(entry, 0);
         switch (entry.verification) {
             case 0:
                 var confidence = 0;
-                for (var ast of asts) {
+                for (var ast of coverageAST) {
                     estree.walk(ast.tree, {
                         enter: (node: any, parent: any, prop: any, index: any) => {
                             if (node.type === "JSXAttribute") {

@@ -1,7 +1,3 @@
-import { AnyMxRecord } from "dns";
-
-
-
 let backgroundPageConnection: chrome.runtime.Port;
 
 const initializeHypothesizer = () => {
