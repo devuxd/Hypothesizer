@@ -4,14 +4,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import PlayArrow from '@material-ui/icons/PlayArrow';
 import Videocam from '@material-ui/icons/Videocam';
 import Modal from 'react-bootstrap/Modal'
 import Pause from '@material-ui/icons/Pause';
 import WbIncandescent from '@material-ui/icons/WbIncandescent';
 import './App.css';
 import * as devtools from '../../api/devtools';
-import { Fragment } from 'react';
 
 function App() {
   devtools.init();

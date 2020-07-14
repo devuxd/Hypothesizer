@@ -1,6 +1,5 @@
 
-import { analyzeCode, constructAST, useTags } from "./codeAnalyzer";
-import { data } from "./tempDatabase";
+import { analyzeCode, useTags } from "./codeAnalyzer";
 
 var keyword_extractor = require("keyword-extractor");
 

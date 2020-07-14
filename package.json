@@ -16,7 +16,10 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "watch": "concurrently \"node scripts/watch.js\" \"cd test && npm run start\"",
+    "watch": "concurrently \"node scripts/watch.js\"",
+    "watch:d1": "npm run watch \"cd defects/defect-1 && npm run start\"",
+    "watch:d2": "npm run watch \"cd defects/defect-2 && npm run start\"",
+    "watch:d3": "npm run watch \"cd defects/defect-3 && npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
