@@ -16,7 +16,7 @@ type codeBlock = {
 const hypotheses: hypothesis[] = [
     {
         tags: ["button", "onclick", "callback", "click"],
-        hypothesis: "The callback is defined incorrectly for your event handler. Try using onClick={() => callback()}",
+        hypothesis: "The callback is defined incorrectly for your event handler. Try using <code>onClick={() => callback()}</code>",
         codeBlocks: {
             incorrect:
                 [

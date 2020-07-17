@@ -17,6 +17,7 @@ const constructAST = async (files: any[]) => {
 }
 const analyzeCode = async (coverage: any, files: string[]) => {
     const relevantAST: Object[] = [];
+    const executionTrace: String[] = [];
     const astList = await constructAST(files);
     for (const ast of astList) {
         const filename = ast.file.substring(ast.file.lastIndexOf("/") + 1, ast.file.lastIndexOf(".js"));
@@ -30,6 +31,7 @@ const analyzeCode = async (coverage: any, files: string[]) => {
                         const index = coverage.findIndex((e: any) => e.functionName === node.id.name);
                         if (index > -1) {
                             relevantAST.push({ node, filename });
+                            executionTrace.push(`<code>${node.id.name}</code> inside <code>${filename}</code> got executed.`);
                         }
                     }
                         break;
@@ -37,6 +39,7 @@ const analyzeCode = async (coverage: any, files: string[]) => {
                         const index = coverage.findIndex((e: any) => e.functionName === node.body.callee?.name);
                         if (index > -1) {
                             relevantAST.push({ node, filename });
+                            executionTrace.push(`<code>${node.body.callee?.name}</code> inside <code>${filename}</code> got executed.`);
                         }
                     }
                         break;
@@ -50,7 +53,7 @@ const analyzeCode = async (coverage: any, files: string[]) => {
             }
         })
     }
-    return relevantAST;
+    return [relevantAST, executionTrace];
 }
 
 

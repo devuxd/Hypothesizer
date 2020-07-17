@@ -16,7 +16,8 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "xss": "^1.0.7"
   },
   "scripts": {
     "watch": "concurrently \"node scripts/watch.js\"",

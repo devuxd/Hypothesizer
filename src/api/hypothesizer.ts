@@ -7,11 +7,12 @@ const keyword_extractor = require("keyword-extractor");
 
 
 const getRelevantAndRankedHypotheses = async (description: String, runTimeMethodsCoverage: any) => {
+    console.log(runTimeMethodsCoverage);
     try {
         const files: any[] = await getSourceCodeFiles();
-        const coverageAST = await analyzeCode(runTimeMethodsCoverage, files);
-        const hypothesesRanked = await RankHypotheses(description, coverageAST);
-        return hypothesesRanked;
+        const astWithTrace = await analyzeCode(runTimeMethodsCoverage, files);
+        const hypothesesRanked = await RankHypotheses(description, astWithTrace[0]);
+        return [hypothesesRanked, astWithTrace[1]];
     } catch (error) {
         console.error(error);
     }
@@ -95,4 +96,4 @@ const getSubTree = (obj: any, key: any, val: any): any[] => {
 //     }
 //     return objects;
 // }
-export { getRelevantAndRankedHypotheses as getRelevantAndRankedHypotheses }
+export { getRelevantAndRankedHypotheses as getRelevantAndRankedHypotheses, getKeywords }
