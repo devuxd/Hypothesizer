@@ -27,26 +27,26 @@ const RankHypotheses = async (description: String, coverageAST: any) => {
             for (const { expressionRootId, subExpression } of candidateHypothesis.codeBlocks.incorrect) {
                 const relevantSubTrees = getSubTree(ast.node, '', expressionRootId).flat();
                 for (const subtree of relevantSubTrees) {
-                    let countNumberOfAccrue = 0;
+                    let countNumberOfOccurrences = 0;
                     for (const { expressionName, expressionValue } of subExpression) {
                         const objectValue = get(subtree, expressionName, undefined);
                         if (typeof expressionValue === "object" &&
                             typeof objectValue === typeof expressionValue) {
-                            countNumberOfAccrue++;
+                            countNumberOfOccurrences++;
 
                         } else {
                             if (objectValue === expressionValue) {
-                                countNumberOfAccrue++;
+                                countNumberOfOccurrences++;
                             }
                         }
                     }
-                    if (countNumberOfAccrue === subExpression.length) {
+                    if (countNumberOfOccurrences === subExpression.length) {
                         confidence++;
                     }
                 }
             }
         }
-        returnedHypotheses.push({ ...candidateHypotheses, confidence })
+        returnedHypotheses.push({ ...candidateHypothesis, confidence })
     }
     console.log(returnedHypotheses)
     return returnedHypotheses;
