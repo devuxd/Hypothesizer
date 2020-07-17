@@ -10,7 +10,9 @@
     "acorn-jsx": "^5.2.0",
     "bootstrap": "^4.5.0",
     "estree-walker": "^2.0.1",
+    "jslinq": "^1.0.22",
     "keyword-extractor": "0.0.19",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
@@ -18,9 +20,9 @@
   },
   "scripts": {
     "watch": "concurrently \"node scripts/watch.js\"",
-    "watch:d1": "npm run watch \"cd defects/defect-1 && npm run start\"",
-    "watch:d2": "npm run watch \"cd defects/defect-2 && npm run start\"",
-    "watch:d3": "npm run watch \"cd defects/defect-3 && npm run start\"",
+    "watch:d1": "npm run watch \"cd test/defect-1 && npm run start\"",
+    "watch:d2": "npm run watch \"cd test/defect-2 && npm run start\"",
+    "watch:d3": "npm run watch \"cd test/defect-3 && npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,19 +44,20 @@
     ]
   },
   "devDependencies": {
-    "customize-cra": "^1.0.0",
-    "react-app-rewire-yaml": "^1.1.0",
-    "typescript": "~3.7.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/acorn": "^4.0.5",
+    "@types/chrome": "0.0.116",
     "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.157",
+    "@types/material-ui": "^0.21.7",
     "@types/node": "^12.12.46",
-    "concurrently": "^5.2.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "@types/material-ui": "^0.21.7",
-    "@types/chrome": "0.0.116",
-    "@types/acorn": "^4.0.5"
+    "concurrently": "^5.2.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewire-yaml": "^1.1.0",
+    "typescript": "~3.7.2"
   }
 }

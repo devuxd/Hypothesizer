@@ -30,7 +30,7 @@ function App() {
       setHypothesizerState("analyzing");
       endProfiler()
         .then(methodCoverage => getRelevantAndRankedHypotheses(description.current, methodCoverage))
-        .then()
+        // .then(hypotheses => console.log(hypotheses))
     }
   }
   // window.addEventListener("message", function (event) {
@@ -66,7 +66,7 @@ function App() {
         <Form>
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label style={{ fontSize: 15 }}>Describe the defect generally. </Form.Label>
-            <Form.Control as="textarea" onChange={collectDescription} />
+            <Form.Control as="textarea" onChange={collectDescription}/>
           </Form.Group>
         </Form>
         <p style={{ fontSize: 15 }}> Please click record and reproduce the defect. </p>

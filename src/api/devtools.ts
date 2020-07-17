@@ -32,7 +32,6 @@ const getSourceCodeFiles = async (): Promise<any> => {
 
 const startProfiler = () => {
     const activeTab = chrome.devtools.inspectedWindow.tabId
-    console.log("tabid: " + activeTab)
     chrome.debugger.attach({ tabId: activeTab }, "1.2", function () {
         chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.enable", undefined, function (result) {
             chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.start", undefined, function (result) {
