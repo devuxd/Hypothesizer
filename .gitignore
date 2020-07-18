@@ -2,7 +2,9 @@
 
 # dependencies
 /node_modules
-/test/defect-*/node_modules
+/test/defect-1/node_modules
+/test/defect-2/node_modules
+/test/defect-3/node_modules
 
 /.pnp
 .pnp.js

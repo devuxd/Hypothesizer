@@ -2,13 +2,13 @@
 export type hypothesis = {
     tags: String[],
     hypothesis: String,
-    codeBlocks: { correct: codeBlock[], incorrect: codeBlock[] }
+    codeBlocks: { correct?: codeBlock[], incorrect?: codeBlock[] }
 }
 type codeBlock = {
     expressionRootId: String
     subExpression: {
         expressionName: string,
-        expressionValue: String | Object | Boolean | Number | undefined
+        expressionValue: String | Object | Boolean | Number | codeBlock |undefined
     }[]
 }
 
@@ -56,24 +56,7 @@ const hypotheses: hypothesis[] = [
                                 }
                             ]
                     }
-                ],
-            correct: [
-                {
-                    expressionRootId: "attributes",
-                    subExpression: [
-                        {
-                            expressionName: "name",
-                            expressionValue: "onClick"
-                        },
-                        {
-                            expressionName: "value.expression.type",
-                            expressionValue: "ArrowFunctionExpression"
-                        },
-                        {
-                            expressionName: "value.expression.body.callee.type",
-                            expressionValue: "Identifier"
-                        }]
-                }]
+                ]
         }
     },
     // {
@@ -84,10 +67,30 @@ const hypotheses: hypothesis[] = [
     //     tags: ["button"],
     //     hypothesis: "Your button is defined incorrectly in JSX. Make sure you have a closing tag, and check other syntax issues.",
     // },
-    // {
-    //     tags: ["input", "text", "changing", "type"],
-    //     hypothesis: "You have defined the onChange incorrectly. Make sure that in the onChange attribute of your input, you have an arrow function defined that updates the value of the input.",
-    // },
+    {
+        tags: ["input", "text", "changing", "updating", "state"],
+        hypothesis: "You have defined the onChange attribute incorrectly. Make sure that in the onChange attribute of your input, you have an arrow function defined that updates the value of the input.",
+        codeBlocks: {
+            correct: [
+                {
+                    expressionRootId: "JSXOpeningElement",
+                    subExpression: [{
+                        expressionName: "name.name",
+                        expressionValue: "input"
+
+                    },
+                    {
+                        expressionName: "attributes",
+                        expressionValue: [{
+                            expressionName: "name.name",
+                            expressionValue: "onChange"
+                        }]
+                    }
+                    ]
+                }
+            ]
+        }
+    },
     // {
     //     tags: ["state", "update", "immediately", "setState"],
     //     hypothesis: "React does not manage state synchronously. If you are checking state directly after a call to setState, the state will not appear to have changed.",

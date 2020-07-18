@@ -43,10 +43,14 @@ const analyzeCode = async (coverage: any, files: string[]) => {
                         }
                     }
                         break;
-                    case "JSXAttribute": {
-                        const index = coverage.findIndex((e: any) => e.functionName === node.name.name);
+                    case "JSXOpeningElement": {
+                        const index = coverage.findIndex((e: any) => {
+                             return e.functionName === node.name.name || node.attributes.find((node:any) =>  e.functionName === node.name.name)
+                            });
                         if (index > -1) {
                             relevantAST.push({ node, filename });
+                            executionTrace.push(`<code>${node.name.name}</code> inside <code>${filename}</code> got executed.`);
+
                         }
                     }
                 }
