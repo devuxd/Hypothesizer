@@ -39,7 +39,8 @@ function EditTodo({ index, oldTodo, setTodo }) {
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="To-do"
               type="text"
               value={inputVal}
-              onChange={e => setInputValue(e.target.value)}
+              //  bug -> missing onChange!
+              // onChange={e => setInputValue(e.target.value)}
             />
           </div>
         </div>
