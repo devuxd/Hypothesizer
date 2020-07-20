@@ -15,8 +15,9 @@ const sendMessageToBackground = (message: string) => {
 }
 
 
-
-//get only the files that we want.
+/**
+ * return an array that contain files of code inside src folder.
+ */
 const getSourceCodeFiles = async (): Promise<any> => {
     return new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
         try {
@@ -28,7 +29,9 @@ const getSourceCodeFiles = async (): Promise<any> => {
     })
     )
 }
-
+/**
+ *  attach an instance of chrome debugger and start precise coverage 
+ */
 
 const startProfiler = () => {
     const activeTab = chrome.devtools.inspectedWindow.tabId
@@ -41,7 +44,10 @@ const startProfiler = () => {
     });
 }
 
-
+/**
+ *  end the precise coverage profiler
+ * 
+ */
 const endProfiler = async () => {
     const activeTab = chrome.devtools.inspectedWindow.tabId;
     return new Promise((resolve, reject) => chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.takePreciseCoverage", undefined, (response: any) => {

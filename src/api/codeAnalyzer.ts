@@ -3,6 +3,10 @@ import * as estree from "estree-walker";
 import { debug } from "console";
 let jsx = require("acorn-jsx");
 
+/**
+ *  return  an AST for each file in the program.
+ * @param files 
+ */
 const constructAST = async (files: any[]) => {
     const astList: any[] = [];
     for (const file of files) {
@@ -15,6 +19,11 @@ const constructAST = async (files: any[]) => {
     }
     return astList
 }
+/**
+ *  return ASTs for only the code that got executed.
+ * @param coverage 
+ * @param files 
+ */
 const analyzeCode = async (coverage: any, files: string[]) => {
     const relevantAST: Object[] = [];
     const executionTrace: String[] = [];
