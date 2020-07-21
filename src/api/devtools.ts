@@ -1,36 +1,11 @@
-
-import { analyzeCode } from "./codeAnalyzer";
-
-
-
 let backgroundPageConnection: chrome.runtime.Port;
-let alreadySent = false; // to prevent multiple request sending
 
-const init = () => {
+const initializeHypothesizer = () => {
     backgroundPageConnection = chrome.runtime.connect({
         name: "Hypothesizer"
     });
-    chrome.runtime.onMessage.addListener(async (message) => {
-        console.log("Received message from background.js");
-        console.log(message);
-
-        if (message.type === "profiling") {
-            console.log("Got a list of methods from profiling");
-            try {
-                const files: any[] = await getSourceCodeFiles();
-                const coverage = await analyzeCode(message.msg, files);
-                console.log(coverage);
-                if(!alreadySent) {
-                    window.postMessage({ msg: coverage }, "*");
-                    alreadySent = true;
-                }
-            } catch (error) {
-                console.error(error);
-            }
-
-        }
-    });
 }
+
 
 const sendMessageToBackground = (message: string) => {
     backgroundPageConnection.postMessage({
@@ -40,34 +15,56 @@ const sendMessageToBackground = (message: string) => {
 }
 
 
-
-//get only the files that we want.
+/**
+ * return an array that contain files of code inside src folder.
+ */
 const getSourceCodeFiles = async (): Promise<any> => {
     return new Promise((resolve, reject) => chrome.devtools.inspectedWindow.getResources(allFiles => {
         try {
-            let files: any[] = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
-            return resolve(files)
+            let temp: any[] = allFiles.filter(file => (file.url.includes("localhost") && file.url.includes("src")));
+            return resolve(temp)
         } catch (e) {
             return reject("Cannot load files");
         }
     })
     )
 }
-
+/**
+ *  attach an instance of chrome debugger and start precise coverage 
+ */
 
 const startProfiler = () => {
-    alreadySent = false;
-    chrome.extension.sendRequest({
-        command: "startProfiling"
+    const activeTab = chrome.devtools.inspectedWindow.tabId
+    chrome.debugger.attach({ tabId: activeTab }, "1.2", function () {
+        chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.enable", undefined, function (result) {
+            chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.start", undefined, function (result) {
+                chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.startPreciseCoverage", { callCount: true, detailed: true }, function (result) { });
+            });
+        });
     });
 }
-const endProfiler = () => {
-    chrome.extension.sendRequest({
-        command: "endProfiling"
-    });
+
+/**
+ *  end the precise coverage profiler
+ * 
+ */
+const endProfiler = async () => {
+    const activeTab = chrome.devtools.inspectedWindow.tabId;
+    return new Promise((resolve, reject) => chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.takePreciseCoverage", undefined, (response: any) => {
+        chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.stopPreciseCoverage", undefined, (result) => {
+            chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.stop", undefined, (result) => {
+                chrome.debugger.sendCommand({ tabId: activeTab }, "Profiler.disable", undefined, (result) => {
+                    const methodCoverage = response.result.filter(
+                        (file: any) => file.url.includes("localhost")
+                    ).map((file: any) => file.functions.filter((func: any) => func.isBlockCoverage)).flat()
+                    return resolve(methodCoverage)
+                });
+            });
+        });
+
+    })
+    );
 }
 
 
-
-
-export { init, sendMessageToBackground, startProfiler, endProfiler }
+export { initializeHypothesizer, sendMessageToBackground, startProfiler, endProfiler, getSourceCodeFiles }

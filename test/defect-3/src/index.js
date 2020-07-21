@@ -1,24 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/main/App';
+import './ParticlesComponent.css';
+import App from './App';
+import ParticlesComponent from './ParticlesComponent'
 import * as serviceWorker from './serviceWorker';
-import Button from 'react-bootstrap/Button';
-import Refresh from '@material-ui/icons/Refresh';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { initializeHypothesizer } from './api/devtools';
-
-initializeHypothesizer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Button
-      onClick={() => window.location.reload()}
-      variant="contained"
-    > <Refresh />
-    </Button>
-    <App />
-  </React.StrictMode>,
+    <ParticlesComponent/>
+    <App/>
+  </React.StrictMode >,
   document.getElementById('root')
 );
 
@@ -26,3 +18,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+//# sourceMappingURL=/src/index.js.map
