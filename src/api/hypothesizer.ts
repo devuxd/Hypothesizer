@@ -39,7 +39,7 @@ const getSubTree = (obj: any, key: any, val: any): any[] => {
  * @param description String
  * @param runTimeMethodsCoverage any[]
  */
-const getRelevantAndRankedHypotheses = async (description: String, runTimeMethodsCoverage: any[]) => {
+const getRelevantAndRankedHypotheses = async (description: String, runTimeMethodsCoverage: any) => {
     try {
         const files: any[] = await getSourceCodeFiles();
         const astWithTrace = await analyzeCode(runTimeMethodsCoverage, files);
@@ -83,8 +83,8 @@ const RankHypotheses = async (description: String, coverageAST: any) => {
         }
         returnedHypotheses.push({ ...candidateHypothesis, confidence })
         console.log(returnedHypotheses)
-        return returnedHypotheses;
     }
+    return returnedHypotheses;
 }
 
 /**

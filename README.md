@@ -10,7 +10,7 @@ Read more here:
 * Clone this repo `` git clone https://github.com/devuxd/Hypothesizer.git  `` .
 * Move to the project folder ``cd Hypothesizer`` .
 * Install dependences ``npm install`` .
-* Run auto build script `` npm run watch `` .
+* Run auto build script `` npm run watch:d1 `` . you could change ``d1`` to any other defect avaliable in the project by changing the number ``1`` to the defect number you want.
 * Load the tool inside google chrome extension by going to  settings > more tools > extensions > load unpacked. Selected the build folder.
 * Open up the chrome devtools by going to settings > more tools > developers tools.
 * You should see a tab in the devtools with the title `Hypothesizer`.
