@@ -1,5 +1,7 @@
 let backgroundPageConnection: chrome.runtime.Port;
 
+
+// connect to the chrome extension system
 const initializeHypothesizer = () => {
     backgroundPageConnection = chrome.runtime.connect({
         name: "Hypothesizer"
