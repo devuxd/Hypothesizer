@@ -19,11 +19,10 @@
     "noEmit": true,
     "jsx": "react",
     "suppressImplicitAnyIndexErrors": true,
-
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src", "public/chrome-shell"
-  ],
-
-
+    "src",
+    "public/chrome-shell"
+  ]
 }
