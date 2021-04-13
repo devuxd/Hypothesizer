@@ -12,7 +12,7 @@ const overrides = require('./config-overrides')
 overrides(config, process.env.NODE_ENV)
 
 // removes react-dev-utils/webpackHotDevClient.js at first in the array
-// config.entry.shift()
+ config.entry.shift()
 config.entry = config.entry.filter(
   (fileName) => !fileName.match(/webpackHotDevClient/)
 )
