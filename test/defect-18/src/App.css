@@ -1,0 +1,14 @@
+.app{
+  z-index: 10;
+  width:500px;
+  display:inline-block;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#todo {
+  text-align: center
+}
