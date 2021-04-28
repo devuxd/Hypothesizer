@@ -1,0 +1,161 @@
+"declarations": [
+              {
+                "type": "VariableDeclarator",
+                "start": 4718,
+                "end": 4839,
+                "id": {
+                  "type": "Identifier",
+                  "start": 4718,
+                  "end": 4725,
+                  "name": "addTodo"
+                },
+                "init": {
+                  "type": "ArrowFunctionExpression",
+                  "start": 4728,
+                  "end": 4839,
+                  "id": null,
+                  "expression": false,
+                  "generator": false,
+                  "async": false,
+                  "params": [
+                    {
+                      "type": "Identifier",
+                      "start": 4728,
+                      "end": 4732,
+                      "name": "text"
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "start": 4736,
+                    "end": 4839,
+                    "body": [
+                      {
+                        "type": "VariableDeclaration",
+                        "start": 4742,
+                        "end": 4773,
+                        "declarations": [
+                          {
+                            "type": "VariableDeclarator",
+                            "start": 4746,
+                            "end": 4773,
+                            "id": {
+                              "type": "Identifier",
+                              "start": 4746,
+                              "end": 4757,
+                              "name": "newTodoList"
+                            },
+                            "init": {
+                              "type": "ArrayExpression",
+                              "start": 4760,
+                              "end": 4773,
+                              "elements": [
+                                {
+                                  "type": "SpreadElement",
+                                  "start": 4761,
+                                  "end": 4772,
+                                  "argument": {
+                                    "type": "Identifier",
+                                    "start": 4764,
+                                    "end": 4772,
+                                    "name": "todoList"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "kind": "var"
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 4778,
+                        "end": 4806,
+                        "expression": {
+                          "type": "CallExpression",
+                          "start": 4778,
+                          "end": 4806,
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 4778,
+                            "end": 4796,
+                            "object": {
+                              "type": "Identifier",
+                              "start": 4778,
+                              "end": 4789,
+                              "name": "newTodoList"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 4790,
+                              "end": 4796,
+                              "name": "concat"
+                            },
+                            "computed": false,
+                            "optional": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "ObjectExpression",
+                              "start": 4797,
+                              "end": 4805,
+                              "properties": [
+                                {
+                                  "type": "Property",
+                                  "start": 4799,
+                                  "end": 4803,
+                                  "method": false,
+                                  "shorthand": true,
+                                  "computed": false,
+                                  "key": {
+                                    "type": "Identifier",
+                                    "start": 4799,
+                                    "end": 4803,
+                                    "name": "text"
+                                  },
+                                  "kind": "init",
+                                  "value": {
+                                    "type": "Identifier",
+                                    "start": 4799,
+                                    "end": 4803,
+                                    "name": "text"
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "optional": false
+                        }
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 4811,
+                        "end": 4835,
+                        "expression": {
+                          "type": "CallExpression",
+                          "start": 4811,
+                          "end": 4835,
+                          "callee": {
+                            "type": "Identifier",
+                            "start": 4811,
+                            "end": 4822,
+                            "name": "setTodoList"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 4823,
+                              "end": 4834,
+                              "name": "newTodoList"
+                            }
+                          ],
+                          "optional": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "kind": "const"
+          }

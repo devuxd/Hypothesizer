@@ -1,0 +1,241 @@
+FIRST
+---------
+
+{
+                                    "type": "JSXAttribute",
+                                    "start": 2509,
+                                    "end": 2527,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2509,
+                                      "end": 2514,
+                                      "name": "value"
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "start": 2515,
+                                      "end": 2527,
+                                      "value": "{inputVal}",
+                                      "raw": "\"{inputVal}\""
+                                    }
+                                  },
+                                  {
+                                    "type": "JSXAttribute",
+                                    "start": 2542,
+                                    "end": 2587,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2542,
+                                      "end": 2550,
+                                      "name": "onChange"
+                                    },
+                                    "value": {
+                                      "type": "JSXExpressionContainer",
+                                      "start": 2551,
+                                      "end": 2587,
+                                      "expression": {
+                                        "type": "ArrowFunctionExpression",
+                                        "start": 2552,
+                                        "end": 2586,
+                                        "id": null,
+                                        "expression": true,
+                                        "generator": false,
+                                        "async": false,
+                                        "params": [
+                                          {
+                                            "type": "Identifier",
+                                            "start": 2552,
+                                            "end": 2553,
+                                            "name": "e"
+                                          }
+                                        ],
+                                        "body": {
+                                          "type": "CallExpression",
+                                          "start": 2557,
+                                          "end": 2586,
+                                          "callee": {
+                                            "type": "Identifier",
+                                            "start": 2557,
+                                            "end": 2570,
+                                            "name": "setInputValue"
+                                          },
+                                          "arguments": [
+                                            {
+                                              "type": "MemberExpression",
+                                              "start": 2571,
+                                              "end": 2585,
+                                              "object": {
+                                                "type": "MemberExpression",
+                                                "start": 2571,
+                                                "end": 2579,
+                                                "object": {
+                                                  "type": "Identifier",
+                                                  "start": 2571,
+                                                  "end": 2572,
+                                                  "name": "e"
+                                                },
+                                                "property": {
+                                                  "type": "Identifier",
+                                                  "start": 2573,
+                                                  "end": 2579,
+                                                  "name": "target"
+                                                },
+                                                "computed": false,
+                                                "optional": false
+                                              },
+                                              "property": {
+                                                "type": "Identifier",
+                                                "start": 2580,
+                                                "end": 2585,
+                                                "name": "value"
+                                              },
+                                              "computed": false,
+                                              "optional": false
+                                            }
+                                          ],
+                                          "optional": false
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2253,
+                                  "end": 2258,
+                                  "name": "input"
+                                }
+
+SECOND (form element)
+---------
+
+
+"openingElement": {
+                                       "attributes": [
+                                           {
+                                               "end": 3390,
+                                               "name": {
+                                                   "end": 3375,
+                                                   "name": "onPress",
+                                                   "start": 3368,
+                                                   "type": "JSXIdentifier"
+                                               },
+                                               "start": 3368,
+                                               "type": "JSXAttribute",
+                                               "value": {
+                                                   "end": 3390,
+                                                   "expression": {
+                                                       "end": 3389,
+                                                       "name": "handleSubmit",
+                                                       "start": 3377,
+                                                       "type": "Identifier"
+                                                   },
+                                                   "start": 3376,
+                                                   "type": "JSXExpressionContainer"
+                                               }
+                                           },
+                                           {
+                                               "end": 3449,
+                                               "name": {
+                                                   "end": 3400,
+                                                   "name": "className",
+                                                   "start": 3391,
+                                                   "type": "JSXIdentifier"
+                                               },
+                                               "start": 3391,
+                                               "type": "JSXAttribute",
+                                               "value": {
+                                                   "end": 3449,
+                                                   "raw": "\"bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4\"",
+                                                   "start": 3401,
+                                                   "type": "Literal",
+                                                   "value": "bg-white shadow-md rounded px-8 pt-4 pb-8 mb-4"
+                                               }
+                                           }
+                                       ],
+                                       "end": 3450,
+                                       "name": {
+                                           "end": 3367,
+                                           "name": "form",
+                                           "start": 3363,
+                                           "type": "JSXIdentifier"
+                                       },
+                                       "selfClosing": false,
+                                       "start": 3362,
+                                       "type": "JSXOpeningElement"
+                                   }
+THIRD (div complementary to form)
+---------
+
+"openingElement": {
+                                                       "attributes": [
+                                                           {
+                                                               "end": 4174,
+                                                               "name": {
+                                                                   "end": 4165,
+                                                                   "name": "type",
+                                                                   "start": 4161,
+                                                                   "type": "JSXIdentifier"
+                                                               },
+                                                               "start": 4161,
+                                                               "type": "JSXAttribute",
+                                                               "value": {
+                                                                   "end": 4174,
+                                                                   "raw": "\"button\"",
+                                                                   "start": 4166,
+                                                                   "type": "Literal",
+                                                                   "value": "button"
+                                                               }
+                                                           },
+                                                           {
+                                                               "end": 4355,
+                                                               "name": {
+                                                                   "end": 4184,
+                                                                   "name": "className",
+                                                                   "start": 4175,
+                                                                   "type": "JSXIdentifier"
+                                                               },
+                                                               "start": 4175,
+                                                               "type": "JSXAttribute",
+                                                               "value": {
+                                                                   "end": 4355,
+                                                                   "raw": "\"bg-blue-500 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out bg-blue-500 hover:bg-green-500 transform hover:-translate-y-1 hover:scale-110 ...\"",
+                                                                   "start": 4185,
+                                                                   "type": "Literal",
+                                                                   "value": "bg-blue-500 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out bg-blue-500 hover:bg-green-500 transform hover:-translate-y-1 hover:scale-110 ..."
+                                                               }
+                                                           }
+                                                       ],
+                                                       "end": 4356,
+                                                       "name": {
+                                                           "end": 4160,
+                                                           "name": "button",
+                                                           "start": 4154,
+                                                           "type": "JSXIdentifier"
+                                                       },
+                                                       "selfClosing": false,
+                                                       "start": 4153,
+                                                       "type": "JSXOpeningElement"
+                                                   },
+                                                   "start": 4153,
+                                                   "type": "JSXElement"
+                                               },
+                                               {
+                                                   "end": 4377,
+                                                   "raw": "\n        ",
+                                                   "start": 4368,
+                                                   "type": "JSXText",
+                                                   "value": "\n        "
+                                               }
+                                           ],
+                                           "closingElement": {
+                                               "end": 4383,
+                                               "name": {
+                                                   "end": 4382,
+                                                   "name": "div",
+                                                   "start": 4379,
+                                                   "type": "JSXIdentifier"
+                                               },
+                                               "start": 4377,
+                                               "type": "JSXClosingElement"
+                                           },

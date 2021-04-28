@@ -1,0 +1,95 @@
+"openingElement": {
+                                                   "attributes": [
+                                                       {
+                                                           "end": 978,
+                                                           "name": {
+                                                               "end": 950,
+                                                               "name": "onClick",
+                                                               "start": 943,
+                                                               "type": "JSXIdentifier"
+                                                           },
+                                                           "start": 943,
+                                                           "type": "JSXAttribute",
+                                                           "value": {
+                                                               "end": 978,
+                                                               "expression": {
+                                                                   "async": false,
+                                                                   "body": {
+                                                                       "arguments": [
+                                                                           {
+                                                                               "computed": false,
+                                                                               "end": 976,
+                                                                               "object": {
+                                                                                   "end": 973,
+                                                                                   "name": "todo",
+                                                                                   "start": 969,
+                                                                                   "type": "Identifier"
+                                                                               },
+                                                                               "optional": false,
+                                                                               "property": {
+                                                                                   "end": 976,
+                                                                                   "name": "id",
+                                                                                   "start": 974,
+                                                                                   "type": "Identifier"
+                                                                               },
+                                                                               "start": 969,
+                                                                               "type": "MemberExpression"
+                                                                           }
+                                                                       ],
+                                                                       "callee": {
+                                                                           "end": 968,
+                                                                           "name": "removeTodo",
+                                                                           "start": 958,
+                                                                           "type": "Identifier"
+                                                                       },
+                                                                       "end": 977,
+                                                                       "optional": false,
+                                                                       "start": 958,
+                                                                       "type": "CallExpression"
+                                                                   },
+                                                                   "end": 977,
+                                                                   "expression": true,
+                                                                   "generator": false,
+                                                                   "id": null,
+                                                                   "params": [
+                                                                   ],
+                                                                   "start": 952,
+                                                                   "type": "ArrowFunctionExpression"
+                                                               },
+                                                               "start": 951,
+                                                               "type": "JSXExpressionContainer"
+                                                           }
+                                                       },
+                                                       {
+                                                           "end": 1153,
+                                                           "name": {
+                                                               "end": 988,
+                                                               "name": "className",
+                                                               "start": 979,
+                                                               "type": "JSXIdentifier"
+                                                           },
+                                                           "start": 979,
+                                                           "type": "JSXAttribute",
+                                                           "value": {
+                                                               "end": 1153,
+                                                               "raw": "\"bg-gray-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center transition duration-500 ease-in-out transform hover:-translate-y-1\"",
+                                                               "start": 989,
+                                                               "type": "Literal",
+                                                               "value": "bg-gray-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center transition duration-500 ease-in-out transform hover:-translate-y-1"
+                                                           }
+                                                       }
+                                                   ],
+                                                   "end": 1154,
+                                                   "name": {
+                                                       "end": 942,
+                                                       "name": "button",
+                                                       "start": 936,
+                                                       "type": "JSXIdentifier"
+                                                   },
+                                                   "selfClosing": false,
+                                                   "start": 935,
+                                                   "type": "JSXOpeningElement"
+                                               },
+                                               "start": 935,
+                                               "type": "JSXElement"
+                                           }

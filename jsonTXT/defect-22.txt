@@ -1,0 +1,205 @@
+FIRST
+---------
+
+{
+                               "end": 3244,
+                               "id": {
+                                   "end": 3033,
+                                   "name": "handleSubmit",
+                                   "start": 3021,
+                                   "type": "Identifier"
+                               },
+                               "init": {
+                                   "async": false,
+                                   "body": {
+                                       "body": [
+                                           {
+                                               "end": 3073,
+                                               "expression": {
+                                                   "arguments": [
+                                                   ],
+                                                   "callee": {
+                                                       "computed": false,
+                                                       "end": 3071,
+                                                       "object": {
+                                                           "end": 3056,
+                                                           "name": "event",
+                                                           "start": 3051,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "optional": false,
+                                                       "property": {
+                                                           "end": 3071,
+                                                           "name": "preventDefault",
+                                                           "start": 3057,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "start": 3051,
+                                                       "type": "MemberExpression"
+                                                   },
+                                                   "end": 3073,
+                                                   "optional": false,
+                                                   "start": 3051,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 3051,
+                                               "type": "ExpressionStatement"
+                                           },
+                                           {
+                                               "end": 3218,
+                                               "expression": {
+                                                   "arguments": [
+                                                       {
+                                                           "end": 3217,
+                                                           "name": "inputVal",
+                                                           "start": 3209,
+                                                           "type": "Identifier"
+                                                       }
+                                                   ],
+                                                   "callee": {
+                                                       "end": 3208,
+                                                       "name": "addTodo",
+                                                       "start": 3201,
+                                                       "type": "Identifier"
+                                                   },
+                                                   "end": 3218,
+                                                   "optional": false,
+                                                   "start": 3201,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 3201,
+                                               "type": "ExpressionStatement"
+                                           },
+                                           {
+                                               "end": 3240,
+                                               "expression": {
+                                                   "arguments": [
+                                                       {
+                                                           "end": 3239,
+                                                           "raw": "\"\"",
+                                                           "start": 3237,
+                                                           "type": "Literal",
+                                                           "value": ""
+                                                       }
+                                                   ],
+                                                   "callee": {
+                                                       "end": 3236,
+                                                       "name": "setInputValue",
+                                                       "start": 3223,
+                                                       "type": "Identifier"
+                                                   },
+                                                   "end": 3240,
+                                                   "optional": false,
+                                                   "start": 3223,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 3223,
+                                               "type": "ExpressionStatement"
+                                           }
+                                       ],
+                                       "end": 3244,
+                                       "start": 3045,
+                                       "type": "BlockStatement"
+
+
+SECOND
+-----------
+
+"openingElement": {
+                                           "attributes": [
+                                               {
+                                                   "end": 5659,
+                                                   "name": {
+                                                       "end": 5653,
+                                                       "name": "className",
+                                                       "start": 5644,
+                                                       "type": "JSXIdentifier"
+                                                   },
+                                                   "start": 5644,
+                                                   "type": "JSXAttribute",
+                                                   "value": {
+                                                       "end": 5659,
+                                                       "raw": "\"app\"",
+                                                       "start": 5654,
+                                                       "type": "Literal",
+                                                       "value": "app"
+                                                   }
+                                               }
+                                           ],
+                                           "end": 5660,
+                                           "name": {
+                                               "end": 5643,
+                                               "name": "div",
+                                               "start": 5640,
+                                               "type": "JSXIdentifier"
+                                           },
+                                           "selfClosing": false,
+                                           "start": 5639,
+                                           "type": "JSXOpeningElement"
+                                       },
+                                       "start": 5639,
+                                       "type": "JSXElement"
+                                   },
+                                   "end": 6304,
+                                   "start": 5624,
+                                   "type": "ReturnStatement"
+                               }
+                           ],
+                           "end": 6308,
+                           "start": 5618,
+                           "type": "BlockStatement"
+                       },
+                       "end": 6593,
+                       "start": 5592,
+                       "test": {
+                           "end": 5616,
+                           "left": {
+                               "computed": false,
+                               "end": 5611,
+                               "object": {
+                                   "end": 5604,
+                                   "name": "todoList",
+                                   "start": 5596,
+                                   "type": "Identifier"
+                               },
+                               "optional": false,
+                               "property": {
+                                   "end": 5611,
+                                   "name": "length",
+                                   "start": 5605,
+                                   "type": "Identifier"
+                               },
+                               "start": 5596,
+                               "type": "MemberExpression"
+                           },
+                           "operator": ">=",
+                           "right": {
+                               "end": 5616,
+                               "raw": "0",
+                               "start": 5615,
+                               "type": "Literal",
+                               "value": 0
+                           },
+                           "start": 5596,
+                           "type": "BinaryExpression"
+                       },
+                       "type": "IfStatement"
+                   }
+               ],
+               "end": 6595,
+               "start": 4380,
+               "type": "BlockStatement"
+           },
+           "end": 6595,
+           "expression": false,
+           "generator": false,
+           "id": {
+               "end": 4377,
+               "name": "App",
+               "start": 4374,
+               "type": "Identifier"
+           },
+           "params": [
+           ],
+           "start": 4365,
+           "type": "FunctionDeclaration"

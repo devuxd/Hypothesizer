@@ -1,0 +1,61 @@
+"openingElement": {
+                            "type": "JSXOpeningElement",
+                            "start": 2660,
+                            "end": 2864,
+                            "attributes": [
+                              {
+                                "type": "JSXAttribute",
+                                "start": 2668,
+                                "end": 2681,
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2668,
+                                  "end": 2672,
+                                  "name": "type"
+                                },
+                                "value": {
+                                  "type": "Literal",
+                                  "start": 2673,
+                                  "end": 2681,
+                                  "value": "button",
+                                  "raw": "\"button\""
+                                }
+                              },
+                              {
+                                "type": "JSXAttribute",
+                                "start": 2682,
+                                "end": 2863,
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2682,
+                                  "end": 2691,
+                                  "name": "className"
+                                },
+                                "value": {
+                                  "type": "Literal",
+                                  "start": 2692,
+                                  "end": 2863,
+                                  "value": "bg-blue-500 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out bg-blue-500 hover:bg-purple-500 transform hover:-translate-y-1 hover:scale-110 ...",
+                                  "raw": "\"bg-blue-500 text-white font-bold py-2 px-4 rounded transition duration-500 ease-in-out bg-blue-500 hover:bg-purple-500 transform hover:-translate-y-1 hover:scale-110 ...\""
+                                }
+                              }
+                            ],
+                            "name": {
+                              "type": "JSXIdentifier",
+                              "start": 2661,
+                              "end": 2667,
+                              "name": "button"
+                            },
+                            "selfClosing": false
+                          },
+                          "closingElement": {
+                            "type": "JSXClosingElement",
+                            "start": 2868,
+                            "end": 2877,
+                            "name": {
+                              "type": "JSXIdentifier",
+                              "start": 2870,
+                              "end": 2876,
+                              "name": "button"
+                            }
+                          }

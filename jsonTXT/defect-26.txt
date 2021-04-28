@@ -1,0 +1,40 @@
+There's multiple errors, but all have the same JSON structural problem.
+
+"declarations": [
+                           {
+                               "end": 4959,
+                               "id": {
+                                   "end": 4840,
+                                   "name": "completeTodo",
+                                   "start": 4828,
+                                   "type": "Identifier"
+                               },
+                               "init": {
+                                   "async": false,
+                                   "body": {
+                                       "body": [
+                                           {
+                                               "declarations": [
+                                                   {
+                                                       "end": 4886,
+                                                       "id": {
+                                                           "end": 4875,
+                                                           "name": "newTodoList",
+                                                           "start": 4864,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "init": {
+                                                           "end": 4886,
+                                                           "name": "todoList",
+                                                           "start": 4878,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "start": 4864,
+                                                       "type": "VariableDeclarator"
+                                                   }
+                                               ],
+                                               "end": 4886,
+                                               "kind": "const",
+                                               "start": 4858,
+                                               "type": "VariableDeclaration"
+

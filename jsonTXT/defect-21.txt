@@ -1,0 +1,147 @@
+{
+                               "end": 4961,
+                               "id": {
+                                   "end": 4840,
+                                   "name": "completeTodo",
+                                   "start": 4828,
+                                   "type": "Identifier"
+                               },
+                               "init": {
+                                   "async": false,
+                                   "body": {
+                                       "body": [
+                                           {
+                                               "declarations": [
+                                                   {
+                                                       "end": 4888,
+                                                       "id": {
+                                                           "end": 4875,
+                                                           "name": "newTodoList",
+                                                           "start": 4864,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "init": {
+                                                           "elements": [
+                                                               {
+                                                                   "end": 4887,
+                                                                   "name": "todoList",
+                                                                   "start": 4879,
+                                                                   "type": "Identifier"
+                                                               }
+                                                           ],
+                                                           "end": 4888,
+                                                           "start": 4878,
+                                                           "type": "ArrayExpression"
+                                                       },
+                                                       "start": 4864,
+                                                       "type": "VariableDeclarator"
+                                                   }
+                                               ],
+                                               "end": 4888,
+                                               "kind": "const",
+                                               "start": 4858,
+                                               "type": "VariableDeclaration"
+                                           },
+                                           {
+                                               "end": 4928,
+                                               "expression": {
+                                                   "end": 4928,
+                                                   "left": {
+                                                       "computed": false,
+                                                       "end": 4921,
+                                                       "object": {
+                                                           "computed": true,
+                                                           "end": 4911,
+                                                           "object": {
+                                                               "end": 4904,
+                                                               "name": "newTodoList",
+                                                               "start": 4893,
+                                                               "type": "Identifier"
+                                                           },
+                                                           "optional": false,
+                                                           "property": {
+                                                               "end": 4910,
+                                                               "name": "index",
+                                                               "start": 4905,
+                                                               "type": "Identifier"
+                                                           },
+                                                           "start": 4893,
+                                                           "type": "MemberExpression"
+                                                       },
+                                                       "optional": false,
+                                                       "property": {
+                                                           "end": 4921,
+                                                           "name": "completed",
+                                                           "start": 4912,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "start": 4893,
+                                                       "type": "MemberExpression"
+                                                   },
+                                                   "operator": "=",
+                                                   "right": {
+                                                       "end": 4928,
+                                                       "raw": "true",
+                                                       "start": 4924,
+                                                       "type": "Literal",
+                                                       "value": true
+                                                   },
+                                                   "start": 4893,
+                                                   "type": "AssignmentExpression"
+                                               },
+                                               "start": 4893,
+                                               "type": "ExpressionStatement"
+                                           },
+                                           {
+                                               "end": 4957,
+                                               "expression": {
+                                                   "arguments": [
+                                                       {
+                                                           "end": 4956,
+                                                           "name": "newTodoList",
+                                                           "start": 4945,
+                                                           "type": "Identifier"
+                                                       }
+                                                   ],
+                                                   "callee": {
+                                                       "end": 4944,
+                                                       "name": "setTodoList",
+                                                       "start": 4933,
+                                                       "type": "Identifier"
+                                                   },
+                                                   "end": 4957,
+                                                   "optional": false,
+                                                   "start": 4933,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 4933,
+                                               "type": "ExpressionStatement"
+                                           }
+                                       ],
+                                       "end": 4961,
+                                       "start": 4852,
+                                       "type": "BlockStatement"
+                                   },
+                                   "end": 4961,
+                                   "expression": false,
+                                   "generator": false,
+                                   "id": null,
+                                   "params": [
+                                       {
+                                           "end": 4848,
+                                           "name": "index",
+                                           "start": 4843,
+                                           "type": "Identifier"
+                                       }
+                                   ],
+                                   "start": 4843,
+                                   "type": "ArrowFunctionExpression"
+                               },
+                               "start": 4828,
+                               "type": "VariableDeclarator"
+                           }
+                       ],
+                       "end": 4961,
+                       "kind": "const",
+                       "start": 4822,
+                       "type": "VariableDeclaration"

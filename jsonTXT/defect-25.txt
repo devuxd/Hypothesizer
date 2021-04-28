@@ -1,0 +1,127 @@
+This JSON difference is same for removeTodo as well.
+
+{
+                "type": "VariableDeclarator",
+                "start": 4718,
+                "end": 4815,
+                "id": {
+                  "type": "Identifier",
+                  "start": 4718,
+                  "end": 4725,
+                  "name": "addTodo"
+                },
+                "init": {
+                  "type": "ArrowFunctionExpression",
+                  "start": 4728,
+                  "end": 4815,
+                  "id": null,
+                  "expression": false,
+                  "generator": false,
+                  "async": false,
+                  "params": [
+                    {
+                      "type": "Identifier",
+                      "start": 4728,
+                      "end": 4732,
+                      "name": "text"
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "start": 4736,
+                    "end": 4815,
+                    "body": [
+                      {
+                        "type": "VariableDeclaration",
+                        "start": 4742,
+                        "end": 4782,
+                        "declarations": [
+                          {
+                            "type": "VariableDeclarator",
+                            "start": 4748,
+                            "end": 4782,
+                            "id": {
+                              "type": "Identifier",
+                              "start": 4748,
+                              "end": 4759,
+                              "name": "newTodoList"
+                            },
+                            "init": {
+                              "type": "ArrayExpression",
+                              "start": 4762,
+                              "end": 4782,
+                              "elements": [
+                                {
+                                  "type": "Identifier",
+                                  "start": 4763,
+                                  "end": 4771,
+                                  "name": "todoList"
+                                },
+                                {
+                                  "type": "ObjectExpression",
+                                  "start": 4773,
+                                  "end": 4781,
+                                  "properties": [
+                                    {
+                                      "type": "Property",
+                                      "start": 4775,
+                                      "end": 4779,
+                                      "method": false,
+                                      "shorthand": true,
+                                      "computed": false,
+                                      "key": {
+                                        "type": "Identifier",
+                                        "start": 4775,
+                                        "end": 4779,
+                                        "name": "text"
+                                      },
+                                      "kind": "init",
+                                      "value": {
+                                        "type": "Identifier",
+                                        "start": 4775,
+                                        "end": 4779,
+                                        "name": "text"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "kind": "const"
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 4787,
+                        "end": 4811,
+                        "expression": {
+                          "type": "CallExpression",
+                          "start": 4787,
+                          "end": 4811,
+                          "callee": {
+                            "type": "Identifier",
+                            "start": 4787,
+                            "end": 4798,
+                            "name": "setTodoList"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 4799,
+                              "end": 4810,
+                              "name": "newTodoList"
+                            }
+                          ],
+                          "optional": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "kind": "const"
+          },
+          {
+            "type": "VariableDeclaration",
