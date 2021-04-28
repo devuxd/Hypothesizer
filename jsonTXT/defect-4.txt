@@ -1,0 +1,104 @@
+{
+                                    "type": "JSXAttribute",
+                                    "start": 2480,
+                                    "end": 2498,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2480,
+                                      "end": 2485,
+                                      "name": "value"
+                                    },
+                                    "value": {
+                                      "type": "Literal",
+                                      "start": 2486,
+                                      "end": 2498,
+                                      "value": "{inputVal}",
+                                      "raw": "\"{inputVal}\""
+                                    }
+                                  },
+                                  {
+                                    "type": "JSXAttribute",
+                                    "start": 2513,
+                                    "end": 2558,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2513,
+                                      "end": 2521,
+                                      "name": "onChange"
+                                    },
+                                    "value": {
+                                      "type": "JSXExpressionContainer",
+                                      "start": 2522,
+                                      "end": 2558,
+                                      "expression": {
+                                        "type": "ArrowFunctionExpression",
+                                        "start": 2523,
+                                        "end": 2557,
+                                        "id": null,
+                                        "expression": true,
+                                        "generator": false,
+                                        "async": false,
+                                        "params": [
+                                          {
+                                            "type": "Identifier",
+                                            "start": 2523,
+                                            "end": 2524,
+                                            "name": "e"
+                                          }
+                                        ],
+                                        "body": {
+                                          "type": "CallExpression",
+                                          "start": 2528,
+                                          "end": 2557,
+                                          "callee": {
+                                            "type": "Identifier",
+                                            "start": 2528,
+                                            "end": 2541,
+                                            "name": "setInputValue"
+                                          },
+                                          "arguments": [
+                                            {
+                                              "type": "MemberExpression",
+                                              "start": 2542,
+                                              "end": 2556,
+                                              "object": {
+                                                "type": "MemberExpression",
+                                                "start": 2542,
+                                                "end": 2550,
+                                                "object": {
+                                                  "type": "Identifier",
+                                                  "start": 2542,
+                                                  "end": 2543,
+                                                  "name": "e"
+                                                },
+                                                "property": {
+                                                  "type": "Identifier",
+                                                  "start": 2544,
+                                                  "end": 2550,
+                                                  "name": "target"
+                                                },
+                                                "computed": false,
+                                                "optional": false
+                                              },
+                                              "property": {
+                                                "type": "Identifier",
+                                                "start": 2551,
+                                                "end": 2556,
+                                                "name": "value"
+                                              },
+                                              "computed": false,
+                                              "optional": false
+                                            }
+                                          ],
+                                          "optional": false
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2253,
+                                  "end": 2258,
+                                  "name": "input"
+                                }

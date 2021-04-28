@@ -1,0 +1,116 @@
+FIRST ERROR
+
+{
+                       "declarations": [
+                           {
+                               "end": 1596,
+                               "id": {
+                                   "end": 1591,
+                                   "name": "str",
+                                   "start": 1588,
+                                   "type": "Identifier"
+                               },
+                               "init": {
+                                   "end": 1596,
+                                   "raw": "\"\"",
+                                   "start": 1594,
+                                   "type": "Literal",
+                                   "value": ""
+                               },
+                               "start": 1588,
+                               "type": "VariableDeclarator"
+                           }
+                       ],
+                       "end": 1596,
+                       "kind": "var",
+                       "start": 1584,
+                       "type": "VariableDeclaration"
+                   }
+
+SECOND ERROR
+
+{
+                                    "type": "JSXAttribute",
+                                    "start": 2446,
+                                    "end": 2482,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2446,
+                                      "end": 2454,
+                                      "name": "onChange"
+                                    },
+                                    "value": {
+                                      "type": "JSXExpressionContainer",
+                                      "start": 2455,
+                                      "end": 2482,
+                                      "expression": {
+                                        "type": "ArrowFunctionExpression",
+                                        "start": 2456,
+                                        "end": 2481,
+                                        "id": null,
+                                        "expression": true,
+                                        "generator": false,
+                                        "async": false,
+                                        "params": [
+                                          {
+                                            "type": "Identifier",
+                                            "start": 2456,
+                                            "end": 2457,
+                                            "name": "e"
+                                          }
+                                        ],
+                                        "body": {
+                                          "type": "AssignmentExpression",
+                                          "start": 2461,
+                                          "end": 2481,
+                                          "operator": "=",
+                                          "left": {
+                                            "type": "Identifier",
+                                            "start": 2461,
+                                            "end": 2464,
+                                            "name": "str"
+                                          },
+                                          "right": {
+                                            "type": "MemberExpression",
+                                            "start": 2467,
+                                            "end": 2481,
+                                            "object": {
+                                              "type": "MemberExpression",
+                                              "start": 2467,
+                                              "end": 2475,
+                                              "object": {
+                                                "type": "Identifier",
+                                                "start": 2467,
+                                                "end": 2468,
+                                                "name": "e"
+                                              },
+                                              "property": {
+                                                "type": "Identifier",
+                                                "start": 2469,
+                                                "end": 2475,
+                                                "name": "target"
+                                              },
+                                              "computed": false,
+                                              "optional": false
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "start": 2476,
+                                              "end": 2481,
+                                              "name": "value"
+                                            },
+                                            "computed": false,
+                                            "optional": false
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                ],
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2193,
+                                  "end": 2198,
+                                  "name": "input"
+                                }
+

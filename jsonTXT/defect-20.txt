@@ -1,0 +1,197 @@
+FIRST
+---------
+
+"openingElement": {
+                          "type": "JSXOpeningElement",
+                          "start": 1180,
+                          "end": 1390,
+                          "attributes": [
+                            {
+                              "type": "JSXAttribute",
+                              "start": 1188,
+                              "end": 1213,
+                              "name": {
+                                "type": "JSXIdentifier",
+                                "start": 1188,
+                                "end": 1195,
+                                "name": "onClick"
+                              },
+                              "value": {
+                                "type": "JSXExpressionContainer",
+                                "start": 1196,
+                                "end": 1213,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "start": 1197,
+                                  "end": 1212,
+                                  "callee": {
+                                    "type": "Identifier",
+                                    "start": 1197,
+                                    "end": 1205,
+                                    "name": "editTodo"
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "start": 1206,
+                                      "end": 1211,
+                                      "name": "index"
+                                    }
+                                  ],
+                                  "optional": false
+                                }
+                              }
+                            },
+                            {
+                              "type": "JSXAttribute",
+                              "start": 1214,
+                              "end": 1389,
+                              "name": {
+                                "type": "JSXIdentifier",
+                                "start": 1214,
+                                "end": 1223,
+                                "name": "className"
+                              },
+                              "value": {
+                                "type": "Literal",
+                                "start": 1224,
+                                "end": 1389,
+                                "value": "bg-gray-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center transition duration-500 ease-in-out transform hover:-translate-y-1",
+                                "raw": "\"bg-gray-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center transition duration-500 ease-in-out transform hover:-translate-y-1\""
+                              }
+                            }
+                          ],
+                          "name": {
+                            "type": "JSXIdentifier",
+                            "start": 1181,
+                            "end": 1187,
+                            "name": "button"
+                          }
+
+SECOND
+---------
+
+"declarations": [
+              {
+                "type": "VariableDeclarator",
+                "start": 4712,
+                "end": 4809,
+                "id": {
+                  "type": "Identifier",
+                  "start": 4712,
+                  "end": 4719,
+                  "name": "addTodo"
+                },
+                "init": {
+                  "type": "ArrowFunctionExpression",
+                  "start": 4722,
+                  "end": 4809,
+                  "id": null,
+                  "expression": false,
+                  "generator": false,
+                  "async": false,
+                  "params": [
+                    {
+                      "type": "Identifier",
+                      "start": 4722,
+                      "end": 4726,
+                      "name": "text"
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "start": 4730,
+                    "end": 4809,
+                    "body": [
+                      {
+                        "type": "VariableDeclaration",
+                        "start": 4736,
+                        "end": 4776,
+                        "declarations": [
+                          {
+                            "type": "VariableDeclarator",
+                            "start": 4742,
+                            "end": 4776,
+                            "id": {
+                              "type": "Identifier",
+                              "start": 4742,
+                              "end": 4753,
+                              "name": "newTodoList"
+                            },
+                            "init": {
+                              "type": "ArrayExpression",
+                              "start": 4756,
+                              "end": 4776,
+                              "elements": [
+                                {
+                                  "type": "Identifier",
+                                  "start": 4757,
+                                  "end": 4765,
+                                  "name": "todoList"
+                                },
+                                {
+                                  "type": "ObjectExpression",
+                                  "start": 4767,
+                                  "end": 4775,
+                                  "properties": [
+                                    {
+                                      "type": "Property",
+                                      "start": 4769,
+                                      "end": 4773,
+                                      "method": false,
+                                      "shorthand": true,
+                                      "computed": false,
+                                      "key": {
+                                        "type": "Identifier",
+                                        "start": 4769,
+                                        "end": 4773,
+                                        "name": "text"
+                                      },
+                                      "kind": "init",
+                                      "value": {
+                                        "type": "Identifier",
+                                        "start": 4769,
+                                        "end": 4773,
+                                        "name": "text"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "kind": "const"
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 4781,
+                        "end": 4805,
+                        "expression": {
+                          "type": "CallExpression",
+                          "start": 4781,
+                          "end": 4805,
+                          "callee": {
+                            "type": "Identifier",
+                            "start": 4781,
+                            "end": 4792,
+                            "name": "setTodoList"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 4793,
+                              "end": 4804,
+                              "name": "newTodoList"
+                            }
+                          ],
+                          "optional": false
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "kind": "const"
+

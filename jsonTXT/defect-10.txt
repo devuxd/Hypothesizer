@@ -1,0 +1,66 @@
+{
+                       "declarations": [
+                           {
+                               "end": 1636,
+                               "id": {
+                                   "elements": [
+                                       {
+                                           "end": 1599,
+                                           "name": "inputVal",
+                                           "start": 1591,
+                                           "type": "Identifier"
+                                       },
+                                       {
+                                           "end": 1614,
+                                           "name": "setInputValue",
+                                           "start": 1601,
+                                           "type": "Identifier"
+                                       }
+                                   ],
+                                   "end": 1615,
+                                   "start": 1590,
+                                   "type": "ArrayPattern"
+                               },
+                               "init": {
+                                   "arguments": [
+                                       {
+                                           "end": 1635,
+                                           "raw": "\"\"",
+                                           "start": 1633,
+                                           "type": "Literal",
+                                           "value": ""
+                                       }
+                                   ],
+                                   "callee": {
+                                       "computed": false,
+                                       "end": 1632,
+                                       "object": {
+                                           "end": 1623,
+                                           "name": "React",
+                                           "start": 1618,
+                                           "type": "Identifier"
+                                       },
+                                       "optional": false,
+                                       "property": {
+                                           "end": 1632,
+                                           "name": "useState",
+                                           "start": 1624,
+                                           "type": "Identifier"
+                                       },
+                                       "start": 1618,
+                                       "type": "MemberExpression"
+                                   },
+                                   "end": 1636,
+                                   "optional": false,
+                                   "start": 1618,
+                                   "type": "CallExpression"
+                               },
+                               "start": 1590,
+                               "type": "VariableDeclarator"
+                           }
+                       ],
+                       "end": 1636,
+                       "kind": "const",
+                       "start": 1584,
+                       "type": "VariableDeclaration"
+                   }

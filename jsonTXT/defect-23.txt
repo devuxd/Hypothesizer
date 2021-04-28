@@ -1,0 +1,154 @@
+FIRST 
+--------
+
+"body": [
+                   {
+                       "declarations": [
+                           {
+                               "end": 1636,
+                               "id": {
+                                   "elements": [
+                                       {
+                                           "end": 1599,
+                                           "name": "inputVal",
+                                           "start": 1591,
+                                           "type": "Identifier"
+                                       },
+                                       {
+                                           "end": 1614,
+                                           "name": "setInputValue",
+                                           "start": 1601,
+                                           "type": "Identifier"
+                                       }
+                                   ],
+                                   "end": 1615,
+                                   "start": 1590,
+                                   "type": "ArrayPattern"
+                               },
+                               "init": {
+                                   "arguments": [
+                                       {
+                                           "end": 1635,
+                                           "raw": "\"\"",
+                                           "start": 1633,
+                                           "type": "Literal",
+                                           "value": ""
+                                       }
+                                   ],
+                                   "callee": {
+                                       "computed": false,
+                                       "end": 1632,
+                                       "object": {
+                                           "end": 1623,
+                                           "name": "React",
+                                           "start": 1618,
+                                           "type": "Identifier"
+                                       },
+                                       "optional": false,
+                                       "property": {
+                                           "end": 1632,
+                                           "name": "useState",
+                                           "start": 1624,
+                                           "type": "Identifier"
+                                       },
+                                       "start": 1618,
+                                       "type": "MemberExpression"
+                                   },
+                                   "end": 1636,
+                                   "optional": false,
+                                   "start": 1618,
+                                   "type": "CallExpression"
+                               },
+                               "start": 1590,
+                               "type": "VariableDeclarator"
+                           }
+                       ],
+                       "end": 1636,
+                       "kind": "const",
+                       "start": 1584,
+                       "type": "VariableDeclaration"
+                   }
+
+SECOND
+--------
+
+"declarations": [
+                           {
+                               "end": 1853,
+                               "id": {
+                                   "end": 1657,
+                                   "name": "handleSubmit",
+                                   "start": 1645,
+                                   "type": "Identifier"
+                               },
+                               "init": {
+                                   "async": false,
+                                   "body": {
+                                       "body": [
+                                           {
+                                               "end": 1697,
+                                               "expression": {
+                                                   "arguments": [
+                                                   ],
+                                                   "callee": {
+                                                       "computed": false,
+                                                       "end": 1695,
+                                                       "object": {
+                                                           "end": 1680,
+                                                           "name": "event",
+                                                           "start": 1675,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "optional": false,
+                                                       "property": {
+                                                           "end": 1695,
+                                                           "name": "preventDefault",
+                                                           "start": 1681,
+                                                           "type": "Identifier"
+                                                       },
+                                                       "start": 1675,
+                                                       "type": "MemberExpression"
+                                                   },
+                                                   "end": 1697,
+                                                   "optional": false,
+                                                   "start": 1675,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 1675,
+                                               "type": "ExpressionStatement"
+                                           },
+                                           {
+                                               "end": 1849,
+                                               "expression": {
+                                                   "arguments": [
+                                                       {
+                                                           "end": 1838,
+                                                           "name": "index",
+                                                           "start": 1833,
+                                                           "type": "Identifier"
+                                                       },
+                                                       {
+                                                           "end": 1848,
+                                                           "name": "inputVal",
+                                                           "start": 1840,
+                                                           "type": "Identifier"
+                                                       }
+                                                   ],
+                                                   "callee": {
+                                                       "end": 1832,
+                                                       "name": "setTodo",
+                                                       "start": 1825,
+                                                       "type": "Identifier"
+                                                   },
+                                                   "end": 1849,
+                                                   "optional": false,
+                                                   "start": 1825,
+                                                   "type": "CallExpression"
+                                               },
+                                               "start": 1825,
+                                               "type": "ExpressionStatement"
+                                           }
+                                       ],
+                                       "end": 1853,
+                                       "start": 1669,
+                                       "type": "BlockStatement"

@@ -1,0 +1,47 @@
+"declarations": [
+              {
+                "type": "VariableDeclarator",
+                "start": 4741,
+                "end": 4857,
+                "id": {
+                  "type": "Identifier",
+                  "start": 4741,
+                  "end": 4748,
+                  "name": "addTodo"
+                },
+                "init": {
+                  "type": "ArrowFunctionExpression",
+                  "start": 4751,
+                  "end": 4857,
+                  "id": null,
+                  "expression": false,
+                  "generator": false,
+                  "async": false,
+                  "params": [
+                    {
+                      "type": "Identifier",
+                      "start": 4751,
+                      "end": 4755,
+                      "name": "text"
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "start": 4759,
+                    "end": 4857,
+                    "body": [
+                      {
+                        "type": "VariableDeclaration",
+                        "start": 4784,
+                        "end": 4824,
+                        "declarations": [
+                          {
+                            "type": "VariableDeclarator",
+                            "start": 4790,
+                            "end": 4824,
+                            "id": {
+                              "type": "Identifier",
+                              "start": 4790,
+                              "end": 4801,
+                              "name": "newTodoList"
+                            }

@@ -1,0 +1,67 @@
+{
+                                    "type": "JSXAttribute",
+                                    "start": 2511,
+                                    "end": 2547,
+                                    "name": {
+                                      "type": "JSXIdentifier",
+                                      "start": 2511,
+                                      "end": 2519,
+                                      "name": "onChange"
+                                    },
+                                    "value": {
+                                      "type": "JSXExpressionContainer",
+                                      "start": 2520,
+                                      "end": 2547,
+                                      "expression": {
+                                        "type": "CallExpression",
+                                        "start": 2521,
+                                        "end": 2546,
+                                        "callee": {
+                                          "type": "Identifier",
+                                          "start": 2521,
+                                          "end": 2534,
+                                          "name": "setInputValue"
+                                        },
+                                        "arguments": [
+                                          {
+                                            "type": "ObjectExpression",
+                                            "start": 2535,
+                                            "end": 2545,
+                                            "properties": [
+                                              {
+                                                "type": "Property",
+                                                "start": 2536,
+                                                "end": 2544,
+                                                "method": false,
+                                                "shorthand": true,
+                                                "computed": false,
+                                                "key": {
+                                                  "type": "Identifier",
+                                                  "start": 2536,
+                                                  "end": 2544,
+                                                  "name": "inputVal"
+                                                },
+                                                "kind": "init",
+                                                "value": {
+                                                  "type": "Identifier",
+                                                  "start": 2536,
+                                                  "end": 2544,
+                                                  "name": "inputVal"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "optional": false
+                                      }
+                                    }
+                                  }
+                                ],
+                                "name": {
+                                  "type": "JSXIdentifier",
+                                  "start": 2253,
+                                  "end": 2258,
+                                  "name": "input"
+                                },
+                                "selfClosing": true
+                              }
